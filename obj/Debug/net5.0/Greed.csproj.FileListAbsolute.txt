@@ -1,0 +1,71 @@
+C:\Users\benjp\Desktop\Coding\winter 2022\cse 210\Greed\obj\Debug\net5.0\Greed.csproj.AssemblyReference.cache
+C:\Users\benjp\Desktop\Coding\winter 2022\cse 210\Greed\obj\Debug\net5.0\Greed.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benjp\Desktop\Coding\winter 2022\cse 210\Greed\obj\Debug\net5.0\Greed.AssemblyInfoInputs.cache
+C:\Users\benjp\Desktop\Coding\winter 2022\cse 210\Greed\obj\Debug\net5.0\Greed.AssemblyInfo.cs
+C:\Users\benjp\Desktop\Coding\winter 2022\cse 210\Greed\obj\Debug\net5.0\Greed.csproj.CoreCompileInputs.cache
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.exe
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.deps.json
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.runtimeconfig.json
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.runtimeconfig.dev.json
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\Raylib-cs.dll
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\runtimes\win-x64\native\raylib.dll
+C:\Users\James\Documents\cse210\GREED\greed\bin\Debug\net5.0\runtimes\win-x86\native\raylib.dll
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.csproj.AssemblyReference.cache
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.AssemblyInfoInputs.cache
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.AssemblyInfo.cs
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.csproj.CoreCompileInputs.cache
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.csproj.CopyComplete
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\refint\Greed.dll
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\Greed.genruntimeconfig.cache
+C:\Users\James\Documents\cse210\GREED\greed\obj\Debug\net5.0\ref\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.exe
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.deps.json
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.runtimeconfig.json
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.runtimeconfig.dev.json
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\Raylib-cs.dll
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\runtimes\win-x64\native\raylib.dll
+C:\Users\James\Documents\cse210\base graohics\greed\bin\Debug\net5.0\runtimes\win-x86\native\raylib.dll
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.csproj.AssemblyReference.cache
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.AssemblyInfoInputs.cache
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.AssemblyInfo.cs
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.csproj.CoreCompileInputs.cache
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.csproj.CopyComplete
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\refint\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\Greed.genruntimeconfig.cache
+C:\Users\James\Documents\cse210\base graohics\greed\obj\Debug\net5.0\ref\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.exe
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.deps.json
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.runtimeconfig.json
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.runtimeconfig.dev.json
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\Raylib-cs.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\runtimes\win-x64\native\raylib.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\bin\Debug\net5.0\runtimes\win-x86\native\raylib.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.csproj.AssemblyReference.cache
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.AssemblyInfoInputs.cache
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.AssemblyInfo.cs
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.csproj.CoreCompileInputs.cache
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.csproj.CopyComplete
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\refint\Greed.dll
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.pdb
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\Greed.genruntimeconfig.cache
+C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\ref\Greed.dll
