@@ -1,7 +1,7 @@
 # base Game librery
 
 ## Team Members
-* Dallin Shaeffer
+* Dallin
 
 ## Overview
 
