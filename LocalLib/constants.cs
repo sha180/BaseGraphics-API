@@ -3,7 +3,7 @@ using LocalLib.Types;
 
 namespace LocalLib
 {
-    public class AttributeKey
+    public struct AttributeKey
     {
         public static string body = "body";
         public static string color = "color";
@@ -14,11 +14,11 @@ namespace LocalLib
         
 
     }
-    public enum StagePositon
+    public struct StagePositon
     {
-        forground,
-        midground,
-        background
+        public const int forground = 2;
+        public const int midground = 1;
+        public const int background = 0;
     }
     public class Prioratry
     {

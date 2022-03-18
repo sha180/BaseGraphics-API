@@ -33,15 +33,15 @@ namespace LocalLib.Scripting.Actions
 
                     position = position.Add(velocity);
 
-                    if (posx < 0)
-                    {
-                        position = new Point(0, position.GetY());
-                    }
-                    else if (posx > PROGRAM_SETTINGS.SCREEN_WIDTH -  body.GetSize().GetX())
-                    {
-                        position = new Point(PROGRAM_SETTINGS.SCREEN_WIDTH -  body.GetSize().GetX(), 
-                            position.GetY());
-                    }
+                    // if (posx < 0)
+                    // {
+                    //     position = new Point(0, position.GetY());
+                    // }
+                    // else if (posx > PROGRAM_SETTINGS.SCREEN_WIDTH -  body.GetSize().GetX())
+                    // {
+                    //     position = new Point(PROGRAM_SETTINGS.SCREEN_WIDTH -  body.GetSize().GetX(), 
+                    //         position.GetY());
+                    // }
 
                     body.SetPosition(position);   
                 }

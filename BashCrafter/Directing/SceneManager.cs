@@ -16,13 +16,13 @@ namespace BashCrafter.Directing
     {
         // public static VideoService VideoService = new RaylibVideoService(Constants.GAME_NAME,
         //     Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.BLACK);
-        // public static AudioService AudioService = new RaylibAudioService();
+        public static AudioService AudioService = new RaylibAudioService();
         public static KeyboardService KeyboardService = new RaylibKeyboardService();
         public static VideoService VideoService = new RaylibVideoService(PROGRAM_SETTINGS.GAME_NAME,
             PROGRAM_SETTINGS.SCREEN_WIDTH, PROGRAM_SETTINGS.SCREEN_HEIGHT, PROGRAM_SETTINGS.BLACK);
 
-        // public static MouseService MouseService = new RaylibMouseService();
-        // public static PhysicsService PhysicsService = new RaylibPhysicsService();
+        public static MouseService MouseService = new RaylibMouseService();
+        public static PhysicsService PhysicsService = new RaylibPhysicsService();
 
         private bool debug = true;
         public SceneManager()
@@ -80,6 +80,15 @@ namespace BashCrafter.Directing
             cast.AddActor("player", actor);
 
 
+            Actor other = new Actor();
+            other.AddAttribute(new AttributeBody(new Point(-100,-100), new Point(50,50), new Point(0,0)));
+            other.AddAttribute(new AttributeColor(new Color(255,0,0)));
+            other.AddAttribute(new AttributeStagePosition(StagePositon.midground, 1000));
+            // other.AddAttribute(new AttributeEntity());
+            // other.AddAttribute(new AttributeCameraTrack());
+            
+            cast.AddActor("player", other);
+
 
             script.ClearAllActions();
 
@@ -87,6 +96,7 @@ namespace BashCrafter.Directing
             script.AddAction("draw", new DrawActorTexture(VideoService));
             script.AddAction("move", new MoveActor());
             script.AddAction("camera", new MoveCameraAction(VideoService));
+            script.AddAction("COLISHION", new CollideActorsAction(PhysicsService, AudioService));
 
             // AddInitActions(script);
             // AddLoadActions(script);
@@ -107,10 +117,11 @@ namespace BashCrafter.Directing
 
         private void PrepareNextLevel(Cast cast, Script script)
         {
-            
+
             Actor background = new Actor();
             background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), new Point(0,0)));
             background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+            background.AddAttribute(new AttributeStagePosition(StagePositon.background, 0));
 
             cast.AddActor("background", background);
 
@@ -119,10 +130,17 @@ namespace BashCrafter.Directing
             actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
             actor.AddAttribute(new AttributeEntity());
             actor.AddAttribute(new AttributeCameraTrack());
+            actor.AddAttribute(new AttributeStagePosition(StagePositon.midground, 100));
             
             cast.AddActor("player", actor);
 
-
+            Actor other = new Actor();
+            other.AddAttribute(new AttributeBody(new Point(0, 0), new Point(25,50), new Point(0,0)));
+            other.AddAttribute(new AttributeColor(new Color(255,0,0)));
+            // other.AddAttribute(new AttributeEntity());
+            actor.AddAttribute(new AttributeStagePosition(StagePositon.midground));
+            System.Console.WriteLine("OTHER");
+            cast.AddActor("  n", other);
 
             script.ClearAllActions();
 

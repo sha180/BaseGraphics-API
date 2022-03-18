@@ -64,6 +64,7 @@ namespace BashCrafter.Directing
                 stageMain.GetInputs(cast, script, "control");
                 stageMain.GetInputs(cast, script, "move");
                 stageMain.GetInputs(cast, script, "camera");
+                stageMain.GetInputs(cast, script, "COLISHION");
                 videoService.ClearBuffer(true);
                 
                 stageMain.GetInputs(cast, script, "draw");

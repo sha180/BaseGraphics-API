@@ -8,7 +8,7 @@ namespace LocalLib.Casting
         
 
         /// <summary>
-        /// Constructs a new instance of Cast.
+        /// Constructs a new instance of NewCast.
         /// </summary>
         public Cast()
         {
@@ -49,7 +49,17 @@ namespace LocalLib.Casting
             }
             return results;
         }
-
+        
+        /// <summary>
+        /// Gets the actors in the given group. Returns an empty list if there aren't any.
+        /// </summary>
+        /// <param name="group">The group name.</param>
+        /// <returns>The list of actors.</returns>
+        public Dictionary<string, List<Actor>> GetDictionary()
+        {
+            return actors;
+        }
+        
         /// <summary>
         /// Gets all the actors in the cast.
         /// </summary>
