@@ -38,7 +38,7 @@ namespace LocalLib.Scripting
             int itemX = itemPos.GetX();
             int itmeY = itemPos.GetY();
             
-            System.Console.WriteLine(videoService == null);
+            // System.Console.WriteLine(videoService == null);
 
             if (
             itemX <= playerX &&
