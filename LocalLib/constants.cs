@@ -82,9 +82,13 @@ namespace LocalLib
         // KEYS
         public static string LEFT = "left";
         public static string RIGHT = "right";
+        public static string UP = "up";
+        public static string DOWN = "down";
         public static string SPACE = "space";
         public static string ENTER = "enter";
         public static string PAUSE = "p";
+
+
 
         // SCENES
         public static string MAIN_MENU = "main_menu";

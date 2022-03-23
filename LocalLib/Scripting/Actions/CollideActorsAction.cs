@@ -37,8 +37,6 @@ namespace LocalLib.Scripting
             Point itemPos = itemBody.GetPosition();
             int itemX = itemPos.GetX();
             int itmeY = itemPos.GetY();
-            
-            // System.Console.WriteLine(videoService == null);
 
             if (
             itemX <= playerX &&
