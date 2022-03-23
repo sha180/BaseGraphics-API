@@ -46,7 +46,7 @@ namespace BashCrafter.Directing
             this.videoService = videoService;
             this.cast = new Cast();
             this.script = new Script();
-            sceneManager.PrepareScene(PROGRAM_SETTINGS.NEW_GAME, cast, script);
+            
         }
         public void GameLoop()
         {
@@ -54,6 +54,7 @@ namespace BashCrafter.Directing
 
             videoService.Initialize();
             
+            sceneManager.PrepareScene(PROGRAM_SETTINGS.NEW_GAME, cast, script);
             // SetupStages(inputService, videoService);
 
             while (videoService.IsWindowOpen())
@@ -62,9 +63,9 @@ namespace BashCrafter.Directing
                 
 
                 stageMain.GetInputs(cast, script, "control");
+                stageMain.GetInputs(cast, script, "COLISHION");
                 stageMain.GetInputs(cast, script, "move");
                 stageMain.GetInputs(cast, script, "camera");
-                stageMain.GetInputs(cast, script, "COLISHION");
                 videoService.ClearBuffer(true);
                 
                 stageMain.GetInputs(cast, script, "draw");

@@ -12,5 +12,6 @@ namespace LocalLib.Services
         /// <param name="agent">The second body.</param>
         /// <returns></returns>
         bool HasCollided(AttributeBody subject, AttributeBody agent);
+
     }
 }

@@ -9,8 +9,10 @@ namespace LocalLib.Scripting.Actions
     /// </summary>
     public class MoveActor : Action
     {
-        public MoveActor()
+        VideoService videoService;
+        public MoveActor(VideoService videoService)
         {
+            this.videoService = videoService;
         }
 
         /// <summary>
@@ -24,14 +26,16 @@ namespace LocalLib.Scripting.Actions
             
             foreach (Actor item in cast.GetAllActors())
             {
-                if (item.HasAttribute(AttributeKey.body) && item.HasAttribute(AttributeKey.entity))
+                if (item.HasAttribute(AttributeKey.body))
                 {
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
                     Point position = body.GetPosition();
-                    Point velocity = body.GetVelocity();
-                    int posx = position.GetX();
+                    
+                    // System.Console.WriteLine($"speed = {(body.GetSpeed() )}");
+                    System.Numerics.Vector2 velocity =  body.GetVelocity().VectorScale( (body.GetSpeed() * videoService.GetDeltaTime()));
+                    // int posx = position.GetX();
 
-                    position = position.Add(velocity);
+                    position = position.Add(VectorToPoint(velocity));
 
                     // if (posx < 0)
                     // {
@@ -46,6 +50,11 @@ namespace LocalLib.Scripting.Actions
                     body.SetPosition(position);   
                 }
             }
+        }
+
+        private Point VectorToPoint(System.Numerics.Vector2 Vector2)
+        {
+            return new Point((int) Vector2.X, (int) Vector2.Y);
         }
     }
 }

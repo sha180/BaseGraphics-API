@@ -36,23 +36,23 @@ namespace LocalLib.Scripting.Actions
 
                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.LEFT))
                     {
-                        velocity = new Point(-7, 0);
+                        velocity = velocity.Add( new Point(-1, 0));
+            body.SetSpeed(200.0f);
                     }
-                    else if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.RIGHT))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.RIGHT))
                     {
-                        velocity = new Point(7, 0);
+                        velocity = velocity.Add( new Point(1, 0));
+            body.SetSpeed(200.0f);
                     }
-                    else if (keyboardService.IsKeyDown("up"))
+                     if (keyboardService.IsKeyDown("up"))
                     {
-                        velocity = new Point(0, -7);
+                        velocity = velocity.Add( new Point(0, -1));
+            body.SetSpeed(200.0f);
                     }
-                    else if (keyboardService.IsKeyDown("down"))
+                     if (keyboardService.IsKeyDown("down"))
                     {
-                        velocity = new Point(0, 7);
-                    }
-                    else
-                    {
-                        velocity = new Point(0, 0);
+                        velocity = velocity.Add( new Point(0, 1));
+            body.SetSpeed(200.0f);
                     }
 
                     body.SetVelocity(velocity);

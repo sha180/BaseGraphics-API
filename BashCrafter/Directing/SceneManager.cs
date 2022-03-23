@@ -24,6 +24,7 @@ namespace BashCrafter.Directing
         public static MouseService MouseService = new RaylibMouseService();
         public static PhysicsService PhysicsService = new RaylibPhysicsService();
 
+        public static castAdder addcast = new castAdder();
         private bool debug = true;
         public SceneManager()
         {
@@ -31,6 +32,7 @@ namespace BashCrafter.Directing
 
         public void PrepareScene(string scene, Cast cast, Script script)
         {
+
             if (scene == PROGRAM_SETTINGS.NEW_GAME)
             {
                 PrepareNewGame(cast, script);
@@ -65,38 +67,51 @@ namespace BashCrafter.Directing
             // AddPlayer(cast);
             // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
 
+
+            // background
             Actor background = new Actor();
-            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), new Point(0,0)));
+            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
             background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
 
             cast.AddActor("background", background);
 
-            Actor actor = new Actor();
-            actor.AddAttribute(new AttributeBody(new Point(0,0), new Point(100,100), new Point(0,0)));
-            actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            actor.AddAttribute(new AttributeEntity());
-            actor.AddAttribute(new AttributeCameraTrack());
+            // midground
+
+            // Actor actor = new Actor();
+            // actor.AddAttribute(new AttributeBody(new Point(-100,0), new Point(100,100), 1000.0f));
+            // actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
+            // actor.AddAttribute(new AttributeEntity());
+            // actor.AddAttribute(new AttributeCameraTrack());
             
-            cast.AddActor("player", actor);
-
-
-            Actor other = new Actor();
-            other.AddAttribute(new AttributeBody(new Point(-100,-100), new Point(50,50), new Point(0,0)));
-            other.AddAttribute(new AttributeColor(new Color(255,0,0)));
-            other.AddAttribute(new AttributeStagePosition(StagePositon.midground, 1000));
-            // other.AddAttribute(new AttributeEntity());
-            // other.AddAttribute(new AttributeCameraTrack());
+            // cast.AddActor("player", actor);
             
-            cast.AddActor("player", other);
+            addcast.AddPlayer(cast);
 
+            addcast.Addrock(cast);
+
+            addcast.AddTree(cast);
+            // Actor rock = new Actor();
+            // rock.AddAttribute(new AttributeBody(new Point(-1000,-100), new Point(500,500), 0));
+            // rock.AddAttribute(new AttributeColor(new Color(255,0,0)));
+            // rock.AddAttribute(new AttributeStagePosition(StagePositon.midground, 1000));
+            // // other.AddAttribute(new AttributeEntity());
+            // // other.AddAttribute(new AttributeCameraTrack());
+            
+            // cast.AddActor("player", rock);
+
+
+            // forground
+
+            
 
             script.ClearAllActions();
 
             script.AddAction("control", new ControlActorAction(KeyboardService));
             script.AddAction("draw", new DrawActorTexture(VideoService));
-            script.AddAction("move", new MoveActor());
+            script.AddAction("move", new MoveActor(VideoService));
             script.AddAction("camera", new MoveCameraAction(VideoService));
-            script.AddAction("COLISHION", new CollideActorsAction(PhysicsService, AudioService));
+            script.AddAction("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+            script.AddAction("COLISHION", new MouseInteracAction(MouseService));
 
             // AddInitActions(script);
             // AddLoadActions(script);
@@ -119,23 +134,23 @@ namespace BashCrafter.Directing
         {
 
             Actor background = new Actor();
-            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), new Point(0,0)));
+            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
             background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
             background.AddAttribute(new AttributeStagePosition(StagePositon.background, 0));
 
             cast.AddActor("background", background);
 
             Actor actor = new Actor();
-            actor.AddAttribute(new AttributeBody(new Point(0,0), new Point(100,100), new Point(0,0)));
+            actor.AddAttribute(new AttributeBody(new Point(0,0), new Point(100,100), 0));
             actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            actor.AddAttribute(new AttributeEntity());
+            // actor.AddAttribute(new AttributeEntity());
             actor.AddAttribute(new AttributeCameraTrack());
             actor.AddAttribute(new AttributeStagePosition(StagePositon.midground, 100));
             
             cast.AddActor("player", actor);
 
             Actor other = new Actor();
-            other.AddAttribute(new AttributeBody(new Point(0, 0), new Point(25,50), new Point(0,0)));
+            other.AddAttribute(new AttributeBody(new Point(0, 0), new Point(25,50), 0));
             other.AddAttribute(new AttributeColor(new Color(255,0,0)));
             // other.AddAttribute(new AttributeEntity());
             actor.AddAttribute(new AttributeStagePosition(StagePositon.midground));
@@ -146,7 +161,7 @@ namespace BashCrafter.Directing
 
             script.AddAction("control", new ControlActorAction(KeyboardService));
             script.AddAction("draw", new DrawActorTexture(VideoService));
-            script.AddAction("move", new MoveActor());
+            script.AddAction("move", new MoveActor(VideoService));
             script.AddAction("camera", new MoveCameraAction(VideoService));
         //     AddBall(cast);
         //     AddBricks(cast);
@@ -213,8 +228,6 @@ namespace BashCrafter.Directing
         // -----------------------------------------------------------------------------------------
         // casting methods
         // -----------------------------------------------------------------------------------------
-
-
 
 
         // private void AddBall(Cast cast)

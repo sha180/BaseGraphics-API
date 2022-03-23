@@ -9,7 +9,7 @@ namespace LocalLib
 {
     public struct SYSTEM_SETTINGS
     {
-    public static int FRAME_RATE = 12;
+    public static int FRAME_RATE = 60;
     public static int MAX_X = 1280;
     public static int MAX_Y = 720;
     public static int CELL_SIZE = 64;

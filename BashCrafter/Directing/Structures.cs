@@ -1,9 +1,8 @@
 using Raylib_cs;
 
-namespace Greed.Game.Directing
+namespace BashCrafter.Directing
 {
-    
-    public enum Stages
+        public enum Stages
     {
         TITLE,
         GAME,

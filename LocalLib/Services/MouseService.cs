@@ -35,5 +35,8 @@ namespace LocalLib.Services
         /// </summary>
         /// <param name="button">The given button.</param>
         bool IsButtonUp(string button);
+
+        
+        bool IsMouseOverBox(Types.Rectangle rectangle);
     }
 }

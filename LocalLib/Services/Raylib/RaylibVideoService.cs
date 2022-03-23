@@ -41,6 +41,12 @@ namespace LocalLib.Services
             }
         }
 
+
+        public float GetDeltaTime()
+        {
+            return Raylib.GetFrameTime();
+        }
+
         /// </inheritdoc>
         public void DrawImage(Types.Image image, Types.Point position)
         {

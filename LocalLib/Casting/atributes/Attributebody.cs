@@ -15,14 +15,17 @@ namespace LocalLib.Casting
         private Point size;
         private Point velocity;
 
+        private float speed;
+
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public AttributeBody(Point position, Point size, Point velocity)
+        public AttributeBody(Point position, Point size, float speed = 0.0f)
         {
             this.position = position;
             this.size = size;
-            this.velocity = velocity;
+            this.speed = speed;
+            this.velocity = new Point(0, 0);
         }
         public string GetAttributeKey()
         {
@@ -90,6 +93,23 @@ namespace LocalLib.Casting
         public void SetVelocity(Point velocity)
         {
             this.velocity = velocity;
+        }
+        
+        /// <summary>
+        /// Sets the speed to the given value.
+        /// </summary>
+        /// <param name="size">The speed size.</param>
+        public void SetSpeed(float speed)
+        {
+            this.speed = speed;
+        }
+
+        /// <summary>
+        /// gets the speed of the Actor.
+        /// </summary>
+        public float GetSpeed()
+        {
+            return speed;
         }
     }
 }

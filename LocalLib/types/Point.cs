@@ -85,7 +85,18 @@ namespace LocalLib.Types
             int y = this.y * factor;
             return new Point(x, y);
         }
-
+        
+        /// <summary>
+        /// Scales the point by multiplying the x and y values by the provided factor.
+        /// </summary>
+        /// <param name="factor">The scaling factor.</param>
+        /// <returns>A scaled instance of Point.</returns>
+        public System.Numerics.Vector2 VectorScale(float factor)
+        {
+            float x = this.x * factor;
+            float y = this.y * factor;
+            return new System.Numerics.Vector2(x, y);
+        }
         public System.Numerics.Vector2 ToVector2()
         {
             return new System.Numerics.Vector2( this.x, this.y);

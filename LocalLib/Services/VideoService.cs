@@ -11,6 +11,8 @@ namespace LocalLib.Services
         /// </summary>
         void ClearBuffer(bool CameraTracking);
 
+        float GetDeltaTime();
+        
         /// <summary>
         /// Draws the given image at the given position.
         /// </summary>
