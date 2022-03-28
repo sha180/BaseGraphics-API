@@ -88,7 +88,7 @@ namespace BashCrafter.Directing
             // }
         }
 
-        private async void PrepareNewGame(Stage stage)
+        private void PrepareNewGame(Stage stage)
         {
             // AddStats(cast);
             // AddLevel(cast);
