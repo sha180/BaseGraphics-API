@@ -40,34 +40,19 @@ namespace LocalLib.Scripting
             
             // System.Console.WriteLine(item != player);
 
-<<<<<<< HEAD
-            if 
-            (
-            itemX <= playerX &&
-            itemX + itemBody.GetSize().GetX() >=  playerX &&
-            itemY >= playerY &&
-            itemY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime()
-            )
-                {
-                    // hitObstacle = 1;
-                    playBody.SetSpeed(0.0f);
-                    playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
-                    Console.WriteLine($"player collided {cast.GetAllActors().IndexOf(item)}");
-                }
-=======
             if (
                 // physicsService.HasCollided(playBody, itemBody) || 
                 (
             itemX <= playerX &&
             itemX + itemBody.GetSize().GetX() >=  playerX &&
-            itmeY >= playerY &&
-            itmeY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime() )
+            itemY >= playerY &&
+            itemY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime() )
             )
         {
             if (item != player)
             {
             // playBody.SetSpeed(0.0f);
-            playBody.SetPosition(new Point(playerX, itmeY));
+            playBody.SetPosition(new Point(playerX, itemY));
                     Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
             }
             // System.Console.WriteLine(item != player);
@@ -79,7 +64,6 @@ namespace LocalLib.Scripting
 
 
 
->>>>>>> e959826760ffbbe511c573447a24c6d4be0ac18d
                 // System.Console.WriteLine($"player colided with  {cast.GetAllActors().IndexOf(item)}");
             //     if (physicsService.HasCollided(playBody, itemBody) && cast.GetFirstActor("player") != item )
             //     {
