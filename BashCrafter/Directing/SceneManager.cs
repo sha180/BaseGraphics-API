@@ -111,18 +111,17 @@ namespace BashCrafter.Directing
             stage.ClearCast();
 
             // background
-            Actor background = new Actor();
+            Actor background = new Actor("background");
             background.AddAttribute(new AttributeBody(new Point(0,0), new Point(PROGRAM_SETTINGS.MAP_X,PROGRAM_SETTINGS.MAP_Y), 0));
             background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
 
-            stage.background.AddActor("background", backdrop);
+            stage.background.AddActor("background", background);
 
             // midground
             if (player == null)
             {
-                addcast.AddPlayer(stage.midground);
-            }
-            else
+                addcast.AddPlayer(stage.midground, new Point(0,0));
+            }else
             {
                 stage.midground.AddActor("player", player);
             }
