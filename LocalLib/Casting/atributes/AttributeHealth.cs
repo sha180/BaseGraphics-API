@@ -10,7 +10,7 @@ namespace LocalLib.Casting
     public class AttributeHealth : Attribute
     {
         
-        private string attributeKey = AttributeKey.TrackAble;
+        private string attributeKey = AttributeKey.health;
         
         private int health;
 

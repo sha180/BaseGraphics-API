@@ -13,6 +13,8 @@ namespace LocalLib
 
         public static string TrackAble = "trackable";
         public static string Stage_Position = "stage_position";
+        public static string health = "health";
+
         
 
     }
