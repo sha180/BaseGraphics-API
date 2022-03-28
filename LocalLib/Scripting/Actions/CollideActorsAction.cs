@@ -33,24 +33,26 @@ namespace LocalLib.Scripting
             foreach (Actor item in cast.GetAllActors())
             {
 
-                AttributeBody itemBody = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
+            AttributeBody itemBody = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
             Point itemPos = itemBody.GetPosition();
             int itemX = itemPos.GetX();
-            int itmeY = itemPos.GetY();
+            int itemY = itemPos.GetY();
             
             // System.Console.WriteLine(videoService == null);
 
-            if (
+            if 
+            (
             itemX <= playerX &&
             itemX + itemBody.GetSize().GetX() >=  playerX &&
-            itmeY >= playerY &&
-            itmeY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime())
-        {
-            // hitObstacle = 1;
-            playBody.SetSpeed(0.0f);
-            playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
+            itemY >= playerY &&
+            itemY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime()
+            )
+                {
+                    // hitObstacle = 1;
+                    playBody.SetSpeed(0.0f);
+                    playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
                     Console.WriteLine($"player collided {cast.GetAllActors().IndexOf(item)}");
-        }
+                }
                 // System.Console.WriteLine($"player colided with  {cast.GetAllActors().IndexOf(item)}");
             //     if (physicsService.HasCollided(playBody, itemBody) && cast.GetFirstActor("player") != item )
             //     {

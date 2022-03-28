@@ -36,22 +36,22 @@ namespace LocalLib.Scripting.Actions
 
                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.LEFT))
                     {
-                        velocity = velocity.Add( new Point(-1, 0));
+                        velocity = velocity.Add(new Point(1, 0));
             body.SetSpeed(200.0f);
                     }
                      if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.RIGHT))
                     {
-                        velocity = velocity.Add( new Point(1, 0));
+                        velocity = velocity.Add(new Point(-1, 0));
             body.SetSpeed(200.0f);
                     }
                      if (keyboardService.IsKeyDown("up"))
                     {
-                        velocity = velocity.Add( new Point(0, -1));
+                        velocity = velocity.Add(new Point(0, 1));
             body.SetSpeed(200.0f);
                     }
                      if (keyboardService.IsKeyDown("down"))
                     {
-                        velocity = velocity.Add( new Point(0, 1));
+                        velocity = velocity.Add(new Point(0, -1));
             body.SetSpeed(200.0f);
                     }
 

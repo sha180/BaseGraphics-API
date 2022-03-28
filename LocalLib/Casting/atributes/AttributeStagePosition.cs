@@ -22,7 +22,7 @@ namespace LocalLib.Casting
         }
         public string GetAttributeKey()
         {
-            return  AttributeKey.Stage_Position;
+            return AttributeKey.Stage_Position;
         }
         
         /// <summary>

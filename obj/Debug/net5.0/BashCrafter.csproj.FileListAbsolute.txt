@@ -20,3 +20,25 @@ C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\
 C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.pdb
 C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.genruntimeconfig.cache
 C:\Users\James\Documents\cse210\base graohics\BaseGraphics-API\obj\Debug\net5.0\ref\BashCrafter.dll
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.exe
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.deps.json
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.runtimeconfig.json
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.runtimeconfig.dev.json
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.dll
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\ref\BashCrafter.dll
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\BashCrafter.pdb
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\Raylib-cs.dll
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\runtimes\linux-x64\native\libraylib.so
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\runtimes\osx-x64\native\libraylib.dylib
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\runtimes\win-x64\native\raylib.dll
+C:\CSE-210\BaseGraphics-API\bin\Debug\net5.0\runtimes\win-x86\native\raylib.dll
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.csproj.AssemblyReference.cache
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.GeneratedMSBuildEditorConfig.editorconfig
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.AssemblyInfoInputs.cache
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.AssemblyInfo.cs
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.csproj.CoreCompileInputs.cache
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.csproj.CopyComplete
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.dll
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\ref\BashCrafter.dll
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.pdb
+C:\CSE-210\BaseGraphics-API\obj\Debug\net5.0\BashCrafter.genruntimeconfig.cache

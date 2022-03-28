@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\James\\Documents\\cse210\\base graohics\\BaseGraphics-API\\BashCrafter.csproj": {}
+    "C:\\CSE-210\\BaseGraphics-API\\BashCrafter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\James\\Documents\\cse210\\base graohics\\BaseGraphics-API\\BashCrafter.csproj": {
+    "C:\\CSE-210\\BaseGraphics-API\\BashCrafter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\James\\Documents\\cse210\\base graohics\\BaseGraphics-API\\BashCrafter.csproj",
+        "projectUniqueName": "C:\\CSE-210\\BaseGraphics-API\\BashCrafter.csproj",
         "projectName": "BashCrafter",
-        "projectPath": "C:\\Users\\James\\Documents\\cse210\\base graohics\\BaseGraphics-API\\BashCrafter.csproj",
-        "packagesPath": "C:\\Users\\James\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\James\\Documents\\cse210\\base graohics\\BaseGraphics-API\\obj\\",
+        "projectPath": "C:\\CSE-210\\BaseGraphics-API\\BashCrafter.csproj",
+        "packagesPath": "C:\\Users\\HPLaptop3\\.nuget\\packages\\",
+        "outputPath": "C:\\CSE-210\\BaseGraphics-API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\James\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\HPLaptop3\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +56,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.14, 5.0.14]"
+              "version": "[5.0.13, 5.0.13]"
             }
           ],
           "frameworkReferences": {
@@ -70,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -26,6 +26,7 @@ namespace BashCrafter.Directing
 
         public static castAdder addcast = new castAdder();
         private bool debug = true;
+        private Random random = new Random(); 
         public SceneManager()
         {
         }
@@ -55,7 +56,7 @@ namespace BashCrafter.Directing
             // }
         }
 
-        private void PrepareNewGame(Cast cast, Script script)
+        private async void PrepareNewGame(Cast cast, Script script)
         {
             // AddStats(cast);
             // AddLevel(cast);
@@ -70,7 +71,7 @@ namespace BashCrafter.Directing
 
             // background
             Actor background = new Actor();
-            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
+            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(PROGRAM_SETTINGS.MAP_X,PROGRAM_SETTINGS.MAP_Y), 0));
             background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
 
             cast.AddActor("background", background);
@@ -85,11 +86,7 @@ namespace BashCrafter.Directing
             
             // cast.AddActor("player", actor);
             
-            addcast.AddPlayer(cast);
 
-            addcast.Addrock(cast);
-
-            addcast.AddTree(cast);
             // Actor rock = new Actor();
             // rock.AddAttribute(new AttributeBody(new Point(-1000,-100), new Point(500,500), 0));
             // rock.AddAttribute(new AttributeColor(new Color(255,0,0)));
@@ -98,7 +95,12 @@ namespace BashCrafter.Directing
             // // other.AddAttribute(new AttributeCameraTrack());
             
             // cast.AddActor("player", rock);
-
+            for (int i = 0; i < 5; i++)
+            {
+            addcast.AddTree(cast, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.TREE_LENGTH), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.TREE_HEIGHT)));
+            addcast.Addrock(cast, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)));
+            }
+            addcast.AddPlayer(cast, new Point(random.Next(PROGRAM_SETTINGS.MAP_X), random.Next(PROGRAM_SETTINGS.MAP_Y - 64)));
 
             // forground
 

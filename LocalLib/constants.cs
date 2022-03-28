@@ -52,6 +52,8 @@ namespace LocalLib
         public static int SCREEN_HEIGHT = 680;
         public static int CENTER_X = SCREEN_WIDTH / 2;
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
+        public static int MAP_X = 1000;
+        public static int MAP_Y = 1000;
 
         // FIELD
         public static int FIELD_TOP = 60;
@@ -98,6 +100,11 @@ namespace LocalLib
         public static string LEVEL_FILE = "Assets/Data/level-{0:000}.txt";
         public static int BASE_LEVELS = 5;
 
+        // ACTORS
+        public static int TREE_HEIGHT = 128;
+        public static int TREE_LENGTH = 64;
+        public static int ROCK_DIMENSIONS = 50;
+        
 
     public static string DATA_PATH = "Data/messages.txt";
     public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
