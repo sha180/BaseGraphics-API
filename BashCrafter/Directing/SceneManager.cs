@@ -88,7 +88,7 @@ namespace BashCrafter.Directing
             // }
         }
 
-        private void PrepareNewGame(Stage stage)
+        private async void PrepareNewGame(Stage stage)
         {
             // AddStats(cast);
             // AddLevel(cast);
@@ -121,13 +121,16 @@ namespace BashCrafter.Directing
             if (player == null)
             {
                 addcast.AddPlayer(stage.midground);
-            }else
+            }
+            else
             {
                 stage.midground.AddActor("player", player);
             }
-            addcast.Addrock(stage.midground);
-
-            addcast.AddTree(stage.midground, new Point(30,50));
+            for (int i = 0; i < 5; i++)
+            {
+            addcast.Addrock(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"Rock " + i);
+            addcast.AddTree(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.TREE_LENGTH), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.TREE_HEIGHT)),"Tree " + i);
+            }
 
             // forground
             menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
