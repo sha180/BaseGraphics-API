@@ -63,9 +63,9 @@ namespace LocalLib.Scripting.Actions
                             
                             // System.Console.WriteLine(item.HasAttribute(AttributeKey.color));
                         bool mouseOver = mouseOverObject[item.ActorKey];
-                        if(mouseService.IsMouseOverBox(body.GetRectangle(), PlayerPosition) && item.HasAttribute(AttributeKey.color) && !mouseOver)
+                        if(mouseService.IsMouseOverBox(body.GetRectangle(), PlayerPosition) && item.HasAttribute(AttributeKey.color))
                         {
-                            System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
+                            // System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
                             AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
                             // Types.Color tmpColor = color.GetColor();
                             
