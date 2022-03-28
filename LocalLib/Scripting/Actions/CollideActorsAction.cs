@@ -42,25 +42,25 @@ namespace LocalLib.Scripting
 
             if (
                 // physicsService.HasCollided(playBody, itemBody) || 
-                (
+            (
             itemX <= playerX &&
             itemX + itemBody.GetSize().GetX() >=  playerX &&
             itemY >= playerY &&
-            itemY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime() )
-            )
-        {
-            if (item != player)
+            itemY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime() 
+            ))
             {
-            // playBody.SetSpeed(0.0f);
-            playBody.SetPosition(new Point(playerX, itemY));
+                if (item != player)
+                {
+                    // playBody.SetSpeed(0.0f);
+                    playBody.SetPosition(new Point(playerX, itemY));
                     Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
-            }
+                }
             // System.Console.WriteLine(item != player);
             // // hitObstacle = 1;
             // playBody.SetSpeed(2000.0f);
             // playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
             //         Console.WriteLine($"player collided {cast.GetAllActors().IndexOf(item)}");
-        }
+            }
 
 
 

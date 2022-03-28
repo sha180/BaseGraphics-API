@@ -11,7 +11,7 @@ namespace BashCrafter
             Actor tree = new Actor(ActorKey);
             tree.AddAttribute(new AttributeBody(position, new Point(PROGRAM_SETTINGS.TREE_LENGTH, PROGRAM_SETTINGS.TREE_HEIGHT), 0));
             tree.AddAttribute(new AttributeColor(new Color(0,200,0)));
-
+            tree.AddAttribute(new AttributeHealth(3));
             cast.AddActor("tree", tree);
 
         }
@@ -21,6 +21,7 @@ namespace BashCrafter
             Actor rock = new Actor(ActorKey);
             rock.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
             rock.AddAttribute(new AttributeColor(new Color(124,124,124)));
+            rock.AddAttribute(new AttributeHealth(5));
 
             cast.AddActor("rock", rock);
         }

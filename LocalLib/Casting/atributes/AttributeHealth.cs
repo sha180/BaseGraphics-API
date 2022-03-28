@@ -12,7 +12,7 @@ namespace LocalLib.Casting
         
         private string attributeKey = AttributeKey.TrackAble;
         
-        public int health;
+        private int health;
 
         // private Point position;
         // private Point size;

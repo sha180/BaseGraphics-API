@@ -28,8 +28,5 @@ namespace LocalLib.Services
             int height = body.GetSize().GetY();
             return new Raylib_cs.Rectangle(x, y, width, height);
         }
-
-        
-      
     }
 }
