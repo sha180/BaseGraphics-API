@@ -6,20 +6,20 @@ using System.Collections.Generic;
 
 namespace LocalLib.Casting
 {
-    public class Actor
+    public class Item
     {
 
         private Dictionary<string, Attribute> attributes;
-        public string ActorKey;
+        public string ItemKey;
 
         /// <summary>
         /// Constructs a new instance of Actor using the given ID.
         /// </summary>
         /// <param name="ID">The given actor type.</param>
-        public Actor(string ActorKey)
+        public Item(string ItemKey)
         {
             attributes = new Dictionary<string, Attribute>();
-            this.ActorKey = ActorKey;
+            this.ItemKey = ItemKey;
             // this.ID = ID;
         }
 

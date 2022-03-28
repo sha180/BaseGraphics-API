@@ -7,23 +7,23 @@ using LocalLib.Services;
 
 namespace LocalLib
 {
-    public struct SYSTEM_SETTINGS
-    {
-    public static int FRAME_RATE = 60;
-    public static int MAX_X = 1280;
-    public static int MAX_Y = 720;
-    public static int CELL_SIZE = 64;
-    public static int FONT_SIZE = 24;
-    public static int COLS = 40;
-    public static int ROWS = 26;
-    public static string CAPTION ="BashCrafter";
-    public static string DATA_PATH = "Data/messages.txt";
-    public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
-    public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
-    public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
-    public static Color WHITE = new Color(255, 255, 255, 255);
-    public static int DEFAULT_ARTIFACTS = 40;
-    }
+    // public struct SYSTEM_SETTINGS
+    // {
+    // public static int FRAME_RATE = 60;
+    // public static int MAX_X = 1280;
+    // public static int MAX_Y = 720;
+    // public static int CELL_SIZE = 64;
+    // public static int FONT_SIZE = 24;
+    // public static int COLS = 40;
+    // public static int ROWS = 26;
+    // public static string CAPTION ="BashCrafter";
+    // public static string DATA_PATH = "Data/messages.txt";
+    // public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
+    // public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
+    // public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
+    // public static Color WHITE = new Color(255, 255, 255, 255);
+    // public static int DEFAULT_ARTIFACTS = 40;
+    // }
     class Program
     {
         static void Main(string[] args)
@@ -32,13 +32,13 @@ namespace LocalLib
             
             // start the game
 
-            // TextureService Icons = new TextureService(TextureRegistry.TEXTURE_PATH_icons, TextureRegistry.ICONS_TextureID);
-            // TextureService Battler = new TextureService(TextureRegistry.TEXTURE_PATH_Battler, TextureRegistry.PLAYER_TextureID);
-            // TextureService Buttons = new TextureService(TextureRegistry.TEXTURE_PATH_BUTTON, TextureRegistry.BOTTON_TextureID);
-            // TextureService settings = new TextureService(TextureRegistry.TEXTURE_PATH_settings, TextureRegistry.settings_Button_TextureID);
+            // LocalLib.Types.Texture Icons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_icons);
+            // LocalLib.Types.Texture Battler = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_Battler);
+            // LocalLib.Types.Texture Buttons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON);
+            // LocalLib.Types.Texture settings = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_settings);
 
 
-            // List<TextureService> TexturesList = new List<TextureService>();
+            // List<LocalLib.Types.Texture> TexturesList = new List<LocalLib.Types.Texture>();
             // TexturesList.Add(settings);
             // TexturesList.Add(Buttons);
             // TexturesList.Add(Battler);

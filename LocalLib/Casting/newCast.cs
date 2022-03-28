@@ -116,6 +116,9 @@ namespace LocalLib.Casting
             actors.Add(group, actorList);
         }
         
-
+        public void clearCast()
+        {
+            actors.Clear();
+        }
     }
 }

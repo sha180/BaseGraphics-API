@@ -23,17 +23,18 @@ namespace LocalLib.Scripting.Actions
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
         /// <param name="script">The script of actions.</param>
-        public void Execute(Cast cast, Script script)
+        public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
-            foreach (Actor item in cast.GetAllActors())
+            foreach (Actor item in midground.GetAllActors())
             {
 
-                if (item.HasAttribute(AttributeKey.body))
+                if (item.HasAttribute(AttributeKey.body) && midground.GetFirstActor("player") == item)
                 {
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
                     Point position = body.GetPosition();
                     Point velocity = new Point(0,0);
 
+            // System.Console.WriteLine("up");
                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.LEFT))
                     {
                         velocity = velocity.Add(new Point(1, 0));
@@ -44,12 +45,12 @@ namespace LocalLib.Scripting.Actions
                         velocity = velocity.Add(new Point(-1, 0));
             body.SetSpeed(200.0f);
                     }
-                     if (keyboardService.IsKeyDown("up"))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.UP))
                     {
                         velocity = velocity.Add(new Point(0, 1));
             body.SetSpeed(200.0f);
                     }
-                     if (keyboardService.IsKeyDown("down"))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.DOWN))
                     {
                         velocity = velocity.Add(new Point(0, -1));
             body.SetSpeed(200.0f);

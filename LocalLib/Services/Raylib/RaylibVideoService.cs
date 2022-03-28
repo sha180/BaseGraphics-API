@@ -13,7 +13,7 @@ namespace LocalLib.Services
         private int height;
         private string title;
         private int width;
-        
+
         Camera2D camera;
         private Dictionary<string, Raylib_cs.Font> fonts
             = new Dictionary<string, Raylib_cs.Font>();
@@ -28,7 +28,18 @@ namespace LocalLib.Services
             this.height = height;
             this.color = color;
             this.camera = new Camera2D();
+            
         }
+
+        public void loadTextures(List<Types.Texture> TextureList)
+        {
+            foreach (Types.Texture item in TextureList)
+            {
+                textures.Add(item.GetTextureKey(), Raylib.LoadTextureFromImage(item.GetTexture()));
+                item.UnloadTexture();
+            } 
+        }
+
         /// </inheritdoc>
         public void ClearBuffer(bool CameraTracking)
         {
@@ -48,21 +59,27 @@ namespace LocalLib.Services
         }
 
         /// </inheritdoc>
-        public void DrawImage(Types.Image image, Types.Point position)
+        public void DrawImage(string textureKey, Types.Rectangle body, Types.Color color)
         {
-            string filename = image.GetFilename();
+            // string filename = image.GetFilename();
             // if (!textures.ContainsKey(filename))
             // {
             //     Raylib_cs.Texture2D loaded = Raylib.LoadTexture(filename);
             //     textures[filename] = loaded;
             // }
             // System.Console.WriteLine($"file name: {filename} graphics");
-            Raylib_cs.Texture2D texture = textures[filename];
-            int x = position.GetX();
-            int y = position.GetY();
-            Raylib.DrawTexture(texture, x, y, Raylib_cs.Color.WHITE);
+            Raylib_cs.Texture2D texture = textures[textureKey];
+            
+            Raylib.DrawTexturePro(texture, new Raylib_cs.Rectangle(0,0, texture.width, texture.height), toRaylibRectangle(body),new Vector2(0,0), 0, ToRaylibColor(color));
         }
 
+        /// </inheritdoc>
+        public void DrawImageAnimated(string textureKey, Types.Rectangle body, Types.Rectangle texturebounds, Types.Color color)
+        {
+            Raylib_cs.Texture2D texture = textures[textureKey];
+            
+            Raylib.DrawTexturePro(texture, toRaylibRectangle(texturebounds), toRaylibRectangle(body), new Vector2(0,0), 0, ToRaylibColor(color));
+        }
         /// </inheritdoc>
         public void DrawRectangle(Types.Point size, Types.Point position, Types.Color color,
             bool filled = false)
@@ -117,10 +134,11 @@ namespace LocalLib.Services
         public void Initialize()
         {
             Raylib.InitWindow(width, height, title);
-            Raylib.SetTargetFPS(SYSTEM_SETTINGS.FRAME_RATE);
+            Raylib.SetTargetFPS(PROGRAM_SETTINGS.FRAME_RATE);
 
         }
         
+
         public void End2dMap()
         {
             
@@ -229,6 +247,14 @@ namespace LocalLib.Services
                 // System.Convert.ToByte(255)
                 );
         }
+        private Raylib_cs.Rectangle toRaylibRectangle(Types.Rectangle rectangle)
+        {
+            int x = rectangle.GetPosition().GetX();
+            int y = rectangle.GetPosition().GetY();
+            int width = rectangle.GetSize().GetX();
+            int height = rectangle.GetSize().GetY();
 
+            return new Rectangle(x,y,width,height);
+        }
     }
 }

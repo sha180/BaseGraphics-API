@@ -8,7 +8,9 @@ namespace LocalLib
         public static string body = "body";
         public static string color = "color";
         public static string texture = "texture";
-        public static string entity = "entity";
+        public static string clickable = "clickable";
+        public static string animated = "animated";
+
         public static string TrackAble = "trackable";
         public static string Stage_Position = "stage_position";
         
@@ -84,9 +86,13 @@ namespace LocalLib
         // KEYS
         public static string LEFT = "left";
         public static string RIGHT = "right";
+        public static string UP = "up";
+        public static string DOWN = "down";
         public static string SPACE = "space";
         public static string ENTER = "enter";
         public static string PAUSE = "p";
+
+
 
         // SCENES
         public static string MAIN_MENU = "main_menu";

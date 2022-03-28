@@ -37,6 +37,9 @@ namespace LocalLib.Services
         bool IsButtonUp(string button);
 
         
-        bool IsMouseOverBox(Types.Rectangle rectangle);
+        bool IsMouseOverBox(Types.Rectangle rectangle, Types.Point PosOffset);
+
+        
+        bool IsMouseOverButton(Types.Rectangle rectangle);
     }
 }
