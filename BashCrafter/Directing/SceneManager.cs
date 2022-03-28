@@ -197,7 +197,7 @@ stage.ClearCast();
 
             // addcast.Addrock(stage.midground);
 
-            addcast.AddTree(stage.midground, new Point(30,50));
+
 
             
 
@@ -225,7 +225,7 @@ stage.ClearCast();
 
         private void PrepareInventory(Stage menu)
         {
-            addcast.AddBackground(menu.background, new Point(512,512), new Color(25,70,120));
+            // addcast.AddBackground(menu.background, new Point(512,512), new Color(25,70,120));
             
             menu.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
             
