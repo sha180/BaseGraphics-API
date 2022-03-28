@@ -7,25 +7,27 @@ namespace  LocalLib.Casting
     /// <summary>
     /// A thing that participates in the game.
     /// </summary>
-    public class AttributeTexture : Attribute
+    public class AttributeAnimated : Attribute
     {
         
-        private string attributeKey = AttributeKey.texture;
+        private string attributeKey = AttributeKey.animated;
 
-        private string textureKey;
+        public int frames;
+        public int currentFrame;
+
 
         // private Image image;
 
         public Rectangle TextureBounds;
-        private TextureType textureType;
 
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public AttributeTexture(string textureKey)
+        public AttributeAnimated(Point size, int frames)
         {
-            TextureBounds = new Rectangle(new Point(0, 0), new Point(0, 0));
-            this.textureKey = textureKey;
+            TextureBounds = new Rectangle(new Point(0, 0), size);
+            this.frames = frames;
+            this.currentFrame = 0;
         }
 
         public string GetAttributeKey()
@@ -37,11 +39,6 @@ namespace  LocalLib.Casting
         /// Gets the key to represint the data.
         /// </summary>
         /// <returns>The color.</returns>
-        public string GetTextureKey()
-        {
-            return textureKey;
-        }
-
 
         /// <summary>
         /// Sets the color to the given value.

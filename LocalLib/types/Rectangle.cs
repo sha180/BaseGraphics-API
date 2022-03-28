@@ -5,8 +5,8 @@ namespace LocalLib.Types
     /// </summary>
     public class Rectangle
     {
-        private Point position;
-        private Point size;
+        public Point position;
+        public Point size;
         
         /// <summary>
         /// Constructs a new instance of Rectangle.

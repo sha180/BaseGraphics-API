@@ -9,8 +9,8 @@ namespace LocalLib.Types
     /// </summary>
     public class Point
     {
-        private int x;
-        private int y;
+        public int x;
+        public int y;
 
         /// <summary>
         /// Constructs a new instance of Point using the given x and y values.

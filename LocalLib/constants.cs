@@ -8,7 +8,9 @@ namespace LocalLib
         public static string body = "body";
         public static string color = "color";
         public static string texture = "texture";
-        public static string entity = "entity";
+        public static string clickable = "clickable";
+        public static string animated = "animated";
+
         public static string TrackAble = "trackable";
         public static string Stage_Position = "stage_position";
         

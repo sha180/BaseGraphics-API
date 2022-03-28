@@ -1,10 +1,14 @@
 using LocalLib.Casting;
 using LocalLib.Types;
+using System.Collections.Generic;
+
 
 namespace LocalLib.Services
 {
     public interface VideoService
     {
+
+        void loadTextures(List<Types.Texture> TextureList);
 
         /// <summary>
         /// Prepares the buffer for drawing.
@@ -12,13 +16,18 @@ namespace LocalLib.Services
         void ClearBuffer(bool CameraTracking);
 
         float GetDeltaTime();
-        
+
         /// <summary>
         /// Draws the given image at the given position.
         /// </summary>
         /// <param name="image">The given image.</param>
         /// <param name="position">The given position.</param>
-        void DrawImage(Image image, Point position);
+        void DrawImage(string textureKey, Types.Rectangle body, Types.Color color);
+        
+        
+        
+        void DrawImageAnimated(string textureKey, Types.Rectangle body, Types.Rectangle texturebounds, Types.Color color);
+
 
         /// <summary>
         /// Draws a rectangle at the given position.

@@ -18,37 +18,52 @@ namespace LocalLib.Scripting
             this.videoService = videoService;
         }
 
-        public void Execute(Cast cast, Script script)
+        public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
             // Ball ball = (Ball)cast.GetFirstActor(Constants.BALL_GROUP);
             // Racket racket = (Racket)cast.GetFirstActor(Constants.RACKET_GROUP);
             // Body ballBody = ball.GetBody();
             // Body racketBody = racket.GetBody();
 
-            Actor player = cast.GetFirstActor("player");
+            Actor player = midground.GetFirstActor("player");
             AttributeBody playBody = (AttributeBody)player.GetActorAttribute(AttributeKey.body);
             Point playerPos = playBody.GetPosition();
             int playerY = playerPos.GetY();
             int playerX = playerPos.GetX();
-            foreach (Actor item in cast.GetAllActors())
+            foreach (Actor item in midground.GetAllActors())
             {
 
                 AttributeBody itemBody = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
             Point itemPos = itemBody.GetPosition();
             int itemX = itemPos.GetX();
             int itmeY = itemPos.GetY();
+            
+            // System.Console.WriteLine(item != player);
 
             if (
+                // physicsService.HasCollided(playBody, itemBody) || 
+                (
             itemX <= playerX &&
             itemX + itemBody.GetSize().GetX() >=  playerX &&
             itmeY >= playerY &&
-            itmeY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime())
+            itmeY < playerY + playBody.GetSpeed() * videoService.GetDeltaTime() )
+            )
         {
-            // hitObstacle = 1;
-            playBody.SetSpeed(0.0f);
-            playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
-                    Console.WriteLine($"player collided {cast.GetAllActors().IndexOf(item)}");
+            if (item != player)
+            {
+            // playBody.SetSpeed(0.0f);
+            playBody.SetPosition(new Point(playerX, itmeY));
+                    Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
+            }
+            // System.Console.WriteLine(item != player);
+            // // hitObstacle = 1;
+            // playBody.SetSpeed(2000.0f);
+            // playBody.SetPosition(new Point(playerPos.GetX(), itemPos.GetY()));
+            //         Console.WriteLine($"player collided {cast.GetAllActors().IndexOf(item)}");
         }
+
+
+
                 // System.Console.WriteLine($"player colided with  {cast.GetAllActors().IndexOf(item)}");
             //     if (physicsService.HasCollided(playBody, itemBody) && cast.GetFirstActor("player") != item )
             //     {

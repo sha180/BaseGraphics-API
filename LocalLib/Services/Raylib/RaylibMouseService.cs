@@ -50,7 +50,19 @@ namespace LocalLib.Services
             return Raylib.IsMouseButtonUp(raylibButton);
         }
         
-        public bool IsMouseOverBox(Types.Rectangle rectangle)
+        public bool IsMouseOverBox(Types.Rectangle rectangle, Types.Point PosOffset)
+        {
+            Types.Point possition = rectangle.GetPosition();
+            int x = possition.GetX() + (PROGRAM_SETTINGS.SCREEN_WIDTH/2 - PosOffset.GetX());
+            int y = possition.GetY() + (PROGRAM_SETTINGS.SCREEN_HEIGHT)/2 - PosOffset.GetY();
+
+            Types.Point size = rectangle.GetSize();
+            int width = size.GetX();
+            int height = size.GetY();
+            // if (Raylib.mou)
+            return Raylib_cs.Raylib.CheckCollisionPointRec(Raylib_cs.Raylib.GetMousePosition(), new Raylib_cs.Rectangle(x, y, width, height));
+        }
+        public bool IsMouseOverButton(Types.Rectangle rectangle)
         {
             Types.Point possition = rectangle.GetPosition();
             int x = possition.GetX();

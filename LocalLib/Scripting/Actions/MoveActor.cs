@@ -21,10 +21,10 @@ namespace LocalLib.Scripting.Actions
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
         /// <param name="script">The script of actions.</param>
-        public void Execute(Cast cast, Script script)
+        public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
             
-            foreach (Actor item in cast.GetAllActors())
+            foreach (Actor item in midground.GetAllActors())
             {
                 if (item.HasAttribute(AttributeKey.body))
                 {

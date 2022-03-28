@@ -6,7 +6,7 @@ namespace LocalLib.Scripting
     /// <summary>
     /// A thing that is done in the game.
     /// </summary>
-    public interface Action
+    public class GameRegistry
     {
         /// <summary>
         /// Executes something that is important in the game. This method should be overriden by 
@@ -14,6 +14,5 @@ namespace LocalLib.Scripting
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
         /// <param name="script">The script of actions.</param>
-        void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null);
     }
 }

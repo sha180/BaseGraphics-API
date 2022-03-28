@@ -19,24 +19,56 @@ namespace BashCrafter.Directing
         public static AudioService AudioService = new RaylibAudioService();
         public static KeyboardService KeyboardService = new RaylibKeyboardService();
         public static VideoService VideoService = new RaylibVideoService(PROGRAM_SETTINGS.GAME_NAME,
-            PROGRAM_SETTINGS.SCREEN_WIDTH, PROGRAM_SETTINGS.SCREEN_HEIGHT, PROGRAM_SETTINGS.BLACK);
+                    PROGRAM_SETTINGS.SCREEN_WIDTH, PROGRAM_SETTINGS.SCREEN_HEIGHT, PROGRAM_SETTINGS.WHITE);
 
         public static MouseService MouseService = new RaylibMouseService();
         public static PhysicsService PhysicsService = new RaylibPhysicsService();
 
         public static castAdder addcast = new castAdder();
+        public static MenuBuilder menuBuilder = new MenuBuilder();
+
+        public List<Texture> TexturesList = new List<Texture>();
+
+        // private Cast forground = new Cast();
+        // private Cast midground = new Cast();
+        
+        // private Cast background = new Cast();
+        
+
         private bool debug = true;
         public SceneManager()
         {
+            
         }
 
-        public void PrepareScene(string scene, Cast cast, Script script)
+        public void InitializeTextures()
+        {
+
+
+            LocalLib.Types.Texture Icons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_icons);
+            LocalLib.Types.Texture Battler = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_Battler);
+            LocalLib.Types.Texture Buttons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON);
+            LocalLib.Types.Texture settings = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_settings);
+
+
+            TexturesList.Add(settings);
+            TexturesList.Add(Buttons);
+            TexturesList.Add(Battler);
+            TexturesList.Add(Icons);
+        }
+
+        public void PrepareScene(string scene, Stage stage)
         {
 
             if (scene == PROGRAM_SETTINGS.NEW_GAME)
             {
-                PrepareNewGame(cast, script);
+                PrepareNewGame(stage);
             }
+            else if (scene == "2")
+            {
+                PrepareNextGame(stage);
+            }
+
             // else if (scene == PROGRAM_SETTINGS.NEXT_LEVEL)
             // {
             //     PrepareNextLevel(cast, script);
@@ -55,7 +87,7 @@ namespace BashCrafter.Directing
             // }
         }
 
-        private void PrepareNewGame(Cast cast, Script script)
+        private void PrepareNewGame(Stage stage)
         {
             // AddStats(cast);
             // AddLevel(cast);
@@ -67,312 +99,149 @@ namespace BashCrafter.Directing
             // AddPlayer(cast);
             // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
 
+            Actor player = null;
+            
+            if (stage.midground.GetFirstActor("player") != null)
+            {
+                player = stage.midground.GetFirstActor("player");
+
+            }
+
+            stage.ClearCast();
 
             // background
-            Actor background = new Actor();
-            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
-            background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+            Actor backdrop = new Actor("background");
+            backdrop.AddAttribute(new AttributeBody(new Point(0,0), new Point(3060, 3600), 0));
+            backdrop.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+            // backdrop.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_icons));
 
-            cast.AddActor("background", background);
+            stage.background.AddActor("background", backdrop);
 
             // midground
+            if (player == null)
+            {
+                addcast.AddPlayer(stage.midground);
+            }else
+            {
+                stage.midground.AddActor("player", player);
+            }
+            addcast.Addrock(stage.midground);
 
-            // Actor actor = new Actor();
-            // actor.AddAttribute(new AttributeBody(new Point(-100,0), new Point(100,100), 1000.0f));
-            // actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            // actor.AddAttribute(new AttributeEntity());
-            // actor.AddAttribute(new AttributeCameraTrack());
+            addcast.AddTree(stage.midground, new Point(30,50));
+
+            // forground
+            menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
+
+
+            // setup Actions
+            // stage.ClearActions();
+
+
+            stage.ClearActions();
+
+            stage.addActionToScript("control", new ControlActorAction(KeyboardService));
+            stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+            stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            stage.addActionToScript("COLISHION", new MouseMenuAction(MouseService));
+            stage.addActionToScript("move", new MoveActor(VideoService));
+            stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             
-            // cast.AddActor("player", actor);
+            stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
+            stage.addActionToScript("drawforground", new DrawActorsBackground(VideoService));
+            stage.addActionToScript("drawMidground", new DrawActorTexture(VideoService));
+            stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
+            stage.addActionToScript("drawBackground", new DrawActorsForground(VideoService));
+            stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
+            stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
+
+            // stage.addActionToScript("control", new ControlActorAction(KeyboardService));
+            // stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+            // stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            // stage.addActionToScript("move", new MoveActor(VideoService));
+            // stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             
-            addcast.AddPlayer(cast);
+            // stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
+            // stage.addActionToScript("draw", new DrawActorTexture(VideoService));
+            // stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
+            // stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, "2"));
+        }
 
-            addcast.Addrock(cast);
 
-            addcast.AddTree(cast);
-            // Actor rock = new Actor();
-            // rock.AddAttribute(new AttributeBody(new Point(-1000,-100), new Point(500,500), 0));
-            // rock.AddAttribute(new AttributeColor(new Color(255,0,0)));
-            // rock.AddAttribute(new AttributeStagePosition(StagePositon.midground, 1000));
-            // // other.AddAttribute(new AttributeEntity());
-            // // other.AddAttribute(new AttributeCameraTrack());
+        private void PrepareNextGame(Stage stage)
+        {
+            // AddStats(cast);
+            // AddLevel(cast);
+            // AddScore(cast);
+            // AddLives(cast);
+            // AddBall(cast);
+            // AddBricks(cast);
+            // AddRacket(cast);
+            // AddPlayer(cast);
+            // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
+            Actor player = stage.midground.GetFirstActor("player");
+stage.ClearCast();
+
+            // background
+            Actor backdrop = new Actor("background");
+            backdrop.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
+            backdrop.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+
+            stage.background.AddActor("background", backdrop);
+
+            // midground
             
-            // cast.AddActor("player", rock);
+            // addcast.AddPlayer(stage.midground);
+            stage.midground.AddActor("player", player);
 
+            // addcast.Addrock(stage.midground);
+
+            addcast.AddTree(stage.midground, new Point(30,50));
+
+            
 
             // forground
 
+
+            // setup Actions
+            stage.ClearActions();
+
+            stage.addActionToScript("control", new ControlActorAction(KeyboardService));
+            stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+            stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            stage.addActionToScript("move", new MoveActor(VideoService));
+            stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             
-
-            script.ClearAllActions();
-
-            script.AddAction("control", new ControlActorAction(KeyboardService));
-            script.AddAction("draw", new DrawActorTexture(VideoService));
-            script.AddAction("move", new MoveActor(VideoService));
-            script.AddAction("camera", new MoveCameraAction(VideoService));
-            script.AddAction("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
-            script.AddAction("COLISHION", new MouseInteracAction(MouseService));
-
-            // AddInitActions(script);
-            // AddLoadActions(script);
-
-            // ChangeSceneAction a = new ChangeSceneAction(KeyboardService, Constants.NEXT_LEVEL);
-            // script.AddAction(Constants.INPUT, a);
-
-            // AddOutputActions(script);
-            // AddUnloadActions(script);
-            // AddReleaseActions(script);
+            stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
+            stage.addActionToScript("draw", new DrawActorsBackground(VideoService));
+            stage.addActionToScript("draw", new DrawActorTexture(VideoService));
+            stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
+            stage.addActionToScript("draw", new DrawActorsForground(VideoService));
+            stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
+            stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
         }
 
-        // private void ActivateBall(Cast cast)
-        // {
-        //     Ball ball = (Ball)cast.GetFirstActor(Constants.BALL_GROUP);
-        //     ball.Release();
-        // }
 
-        private void PrepareNextLevel(Cast cast, Script script)
+        private void PrepareInventory(Stage menu)
         {
-
-            Actor background = new Actor();
-            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
-            background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
-            background.AddAttribute(new AttributeStagePosition(StagePositon.background, 0));
-
-            cast.AddActor("background", background);
-
-            Actor actor = new Actor();
-            actor.AddAttribute(new AttributeBody(new Point(0,0), new Point(100,100), 0));
-            actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            // actor.AddAttribute(new AttributeEntity());
-            actor.AddAttribute(new AttributeCameraTrack());
-            actor.AddAttribute(new AttributeStagePosition(StagePositon.midground, 100));
+            addcast.AddBackground(menu.background, new Point(512,512), new Color(25,70,120));
             
-            cast.AddActor("player", actor);
+            menu.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            
+            // menu.addActionToScript("camera", new MoveCameraAction(VideoService));
 
-            Actor other = new Actor();
-            other.AddAttribute(new AttributeBody(new Point(0, 0), new Point(25,50), 0));
-            other.AddAttribute(new AttributeColor(new Color(255,0,0)));
-            // other.AddAttribute(new AttributeEntity());
-            actor.AddAttribute(new AttributeStagePosition(StagePositon.midground));
-            System.Console.WriteLine("OTHER");
-            cast.AddActor("  n", other);
+            // menu.addActionToScript("startDrawing", new StartDrawing(VideoService));
+            menu.addActionToScript("draw", new DrawActorTexture(VideoService));
+            menu.addActionToScript("endDrawing", new EndDrawing(VideoService));
+            // menu.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
 
-            script.ClearAllActions();
-
-            script.AddAction("control", new ControlActorAction(KeyboardService));
-            script.AddAction("draw", new DrawActorTexture(VideoService));
-            script.AddAction("move", new MoveActor(VideoService));
-            script.AddAction("camera", new MoveCameraAction(VideoService));
-        //     AddBall(cast);
-        //     AddBricks(cast);
-        //     AddRacket(cast);
-        //     AddDialog(cast, Constants.PREP_TO_LAUNCH);
-
-        //     script.ClearAllActions();
-
-        //     TimedChangeSceneAction ta = new TimedChangeSceneAction(Constants.IN_PLAY, 2, DateTime.Now);
-        //     script.AddAction(Constants.INPUT, ta);
-
-        //     AddOutputActions(script);
-
-        //     PlaySoundAction sa = new PlaySoundAction(AudioService, Constants.WELCOME_SOUND);
-        //     script.AddAction(Constants.OUTPUT, sa);
+            // menu.background.AddActor("background", );
         }
-
-        // private void PrepareTryAgain(Cast cast, Script script)
-        // {
-        //     AddBall(cast);
-        //     AddRacket(cast);
-        //     AddDialog(cast, Constants.PREP_TO_LAUNCH);
-
-        //     script.ClearAllActions();
-            
-        //     TimedChangeSceneAction ta = new TimedChangeSceneAction(Constants.IN_PLAY, 2, DateTime.Now);
-        //     script.AddAction(Constants.INPUT, ta);
-            
-        //     AddUpdateActions(script);
-        //     AddOutputActions(script);
-        // }
-
-        // private void PrepareInPlay(Cast cast, Script script)
-        // {
-        //     ActivateBall(cast);
-        //     cast.ClearActors(Constants.DIALOG_GROUP);
-
-        //     script.ClearAllActions();
-
-        //     ControlRacketAction action = new ControlRacketAction(KeyboardService);
-        //     script.AddAction(Constants.INPUT, new ControlPlayerAction(KeyboardService));
-        //     script.AddAction(Constants.INPUT, action);
-
-        //     AddUpdateActions(script);    
-        //     AddOutputActions(script);
-        
-        // }
-
-        
-        // private void PrepareGameOver(Cast cast, Script script)
-        // {
-        //     AddBall(cast);
-        //     AddRacket(cast);
-        //     AddDialog(cast, Constants.WAS_GOOD_GAME);
-
-        //     script.ClearAllActions();
-
-        //     TimedChangeSceneAction ta = new TimedChangeSceneAction(Constants.NEW_GAME, 5, DateTime.Now);
-        //     script.AddAction(Constants.INPUT, ta);
-
-        //     AddOutputActions(script);
-        // }
-
         // -----------------------------------------------------------------------------------------
         // casting methods
         // -----------------------------------------------------------------------------------------
 
 
-        // private void AddBall(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.BALL_GROUP);
-        
-        //     int x = Constants.CENTER_X - Constants.BALL_WIDTH / 2;
-        //     int y = Constants.SCREEN_HEIGHT - Constants.RACKET_HEIGHT - Constants.BALL_HEIGHT;
-        
-        //     Point position = new Point(x, y);
-        //     Point size = new Point(Constants.BALL_WIDTH, Constants.BALL_HEIGHT);
-        //     Point velocity = new Point(0, 0);
-        
-        //     Body body = new Body(position, size, velocity);
-        //     Image image = new Image(Constants.BALL_IMAGE);
-        //     Ball ball = new Ball(body, image, debug);
-        
-        //     cast.AddActor(Constants.BALL_GROUP, ball);
-        // }
 
-        // private void AddBricks(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.BRICK_GROUP);
-
-        //     Stats stats = (Stats)cast.GetFirstActor(Constants.STATS_GROUP);
-        //     int level = stats.GetLevel() % Constants.BASE_LEVELS;
-        //     string filename = string.Format(Constants.LEVEL_FILE, level);
-        //     List<List<string>> rows = LoadLevel(filename);
-
-        //     for (int r = 0; r < rows.Count; r++)
-        //     {
-        //         for (int c = 0; c < rows[r].Count; c++)
-        //         {
-        //             int x = Constants.FIELD_LEFT + c * Constants.BRICK_WIDTH;
-        //             int y = Constants.FIELD_TOP + r * Constants.BRICK_HEIGHT;
-
-        //             string color = rows[r][c][0].ToString();
-        //             int frames = (int)Char.GetNumericValue(rows[r][c][1]);
-        //             int points = Constants.BRICK_POINTS;
-
-        //             Point position = new Point(x, y);
-        //             Point size = new Point(Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT);
-        //             Point velocity = new Point(0, 0);
-        //             List<string> images = Constants.BRICK_IMAGES[color].GetRange(0, frames);
-
-        //             Body body = new Body(position, size, velocity);
-        //             Animation animation = new Animation(images, Constants.BRICK_RATE, 1);
-                    
-        //             Brick brick = new Brick(body, animation, points, debug);
-        //             cast.AddActor(Constants.BRICK_GROUP, brick);
-        //         }
-        //     }
-        // }
-
-        // private void AddDialog(Cast cast, string message)
-        // {
-        //     cast.ClearActors(Constants.DIALOG_GROUP);
-
-        //     Text text = new Text(message, Constants.FONT_FILE, Constants.FONT_SIZE, 
-        //         Constants.ALIGN_CENTER, Constants.WHITE);
-        //     Point position = new Point(Constants.CENTER_X, Constants.CENTER_Y);
-
-        //     Label label = new Label(text, position);
-        //     cast.AddActor(Constants.DIALOG_GROUP, label);   
-        // }
-
-        // private void AddLevel(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.LEVEL_GROUP);
-
-        //     Text text = new Text(Constants.LEVEL_FORMAT, Constants.FONT_FILE, Constants.FONT_SIZE, 
-        //         Constants.ALIGN_LEFT, Constants.WHITE);
-        //     Point position = new Point(Constants.HUD_MARGIN, Constants.HUD_MARGIN);
-
-        //     Label label = new Label(text, position);
-        //     cast.AddActor(Constants.LEVEL_GROUP, label);
-        // }
-
-        // private void AddLives(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.LIVES_GROUP);
-
-        //     Text text = new Text(Constants.LIVES_FORMAT, Constants.FONT_FILE, Constants.FONT_SIZE, 
-        //         Constants.ALIGN_RIGHT, Constants.WHITE);
-        //     Point position = new Point(Constants.SCREEN_WIDTH - Constants.HUD_MARGIN, 
-        //         Constants.HUD_MARGIN);
-
-        //     Label label = new Label(text, position);
-        //     cast.AddActor(Constants.LIVES_GROUP, label);   
-        // }
-
-        // private void AddRacket(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.RACKET_GROUP);
-        
-        //     int x = Constants.CENTER_X - Constants.RACKET_WIDTH / 2;
-        //     int y = Constants.SCREEN_HEIGHT - Constants.RACKET_HEIGHT;
-        
-        //     Point position = new Point(x, y);
-        //     Point size = new Point(Constants.RACKET_WIDTH, Constants.RACKET_HEIGHT);
-        //     Point velocity = new Point(0, 0);
-        
-        //     Body body = new Body(position, size, velocity);
-        //     Animation animation = new Animation(Constants.RACKET_IMAGES, Constants.RACKET_RATE, 0);
-        //     Racket racket = new Racket(body, animation, debug);
-        
-        //     cast.AddActor(Constants.RACKET_GROUP, racket);
-        // }
-
-        // private void AddPlayer(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.PLAYER_GROUP);
-        
-        //     int x = Constants.CENTER_X - Constants.RACKET_WIDTH / 2;
-        //     int y = Constants.SCREEN_HEIGHT - Constants.RACKET_HEIGHT;
-        
-        //     Point position = new Point(x, y);
-        //     Point size = new Point(Constants.RACKET_WIDTH, Constants.RACKET_HEIGHT);
-        //     Point velocity = new Point(0, 0);
-        
-        //     Body body = new Body(position, size, velocity);
-        //     Animation animation = new Animation(Constants.RACKET_IMAGES, Constants.RACKET_RATE, 0);
-        //     Racket racket = new Racket(body, animation, debug);
-        
-        //     cast.AddActor(Constants.PLAYER_GROUP, racket);
-        // }
-
-        // private void AddScore(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.SCORE_GROUP);
-
-        //     Text text = new Text(Constants.SCORE_FORMAT, Constants.FONT_FILE, Constants.FONT_SIZE, 
-        //         Constants.ALIGN_CENTER, Constants.WHITE);
-        //     Point position = new Point(Constants.CENTER_X, Constants.HUD_MARGIN);
-            
-        //     Label label = new Label(text, position);
-        //     cast.AddActor(Constants.SCORE_GROUP, label);   
-        // }
-
-        // private void AddStats(Cast cast)
-        // {
-        //     cast.ClearActors(Constants.STATS_GROUP);
-        //     Stats stats = new Stats();
-        //     cast.AddActor(Constants.STATS_GROUP, stats);
-        // }
 
         private List<List<string>> LoadLevel(string filename)
         {
@@ -404,38 +273,38 @@ namespace BashCrafter.Directing
         //     script.AddAction(Constants.LOAD, new LoadAssetsAction(AudioService, VideoService));
         // }
 
-        // private void AddOutputActions(Script script)
-        // {
-        //     script.AddAction(Constants.OUTPUT, new StartDrawingAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawHudAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawBallAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawBricksAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawRacketAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawDialogAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new DrawPlayerAction(VideoService));
-        //     script.AddAction(Constants.OUTPUT, new EndDrawingAction(VideoService));
-        // }
+        private void AddOutputActions(Stage stage)
+        {
+            // stage.addActionToScript(Constants.OUTPUT, new StartDrawingAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawHudAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawBallAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawBricksAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawRacketAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawDialogAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new DrawPlayerAction(VideoService));
+            // stage.addActionToScript(Constants.OUTPUT, new EndDrawingAction(VideoService));
+        }
 
-        // private void AddUnloadActions(Script script)
-        // {
-        //     script.AddAction(Constants.UNLOAD, new UnloadAssetsAction(AudioService, VideoService));
-        // }
+        private void AddUnloadActions(Stage stage)
+        {
+            // stage.addActionToScript(Constants.UNLOAD, new UnloadAssetsAction(AudioService, VideoService));
+        }
 
-        // private void AddReleaseActions(Script script)
-        // {
-        //     script.AddAction(Constants.RELEASE, new ReleaseDevicesAction(AudioService, 
-        //         VideoService));
-        // }
+        private void AddReleaseActions(Stage stage)
+        {
+            // stage.addActionToScript(Constants.RELEASE, new ReleaseDevicesAction(AudioService, 
+            //     VideoService));
+        }
 
-        // private void AddUpdateActions(Script script)
-        // {
-        //     script.AddAction(Constants.UPDATE, new MoveBallAction());
-        //     script.AddAction(Constants.UPDATE, new MoveRacketAction());
-        //     script.AddAction(Constants.UPDATE, new MovePlayerAction());
-        //     script.AddAction(Constants.UPDATE, new CollideBordersAction(PhysicsService, AudioService));
-        //     script.AddAction(Constants.UPDATE, new CollideBrickAction(PhysicsService, AudioService));
-        //     script.AddAction(Constants.UPDATE, new CollideRacketAction(PhysicsService, AudioService));
-        //     script.AddAction(Constants.UPDATE, new CheckOverAction());     
-        // }
+        private void AddUpdateActions(Stage stage)
+        {
+            // stage.addActionToScript(Constants.UPDATE, new MoveBallAction());
+            // stage.addActionToScript(Constants.UPDATE, new MoveRacketAction());
+            // stage.addActionToScript(Constants.UPDATE, new MovePlayerAction());
+            // stage.addActionToScript(Constants.UPDATE, new CollideBordersAction(PhysicsService, AudioService));
+            // stage.addActionToScript(Constants.UPDATE, new CollideBrickAction(PhysicsService, AudioService));
+            // stage.addActionToScript(Constants.UPDATE, new CollideRacketAction(PhysicsService, AudioService));
+            // stage.addActionToScript(Constants.UPDATE, new CheckOverAction());     
+        }
     }
 }
