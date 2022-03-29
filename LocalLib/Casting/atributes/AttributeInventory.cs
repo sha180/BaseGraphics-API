@@ -10,9 +10,11 @@ namespace LocalLib.Casting
     public class AttributeInventory : Attribute
     {
         
-        private string attributeKey = AttributeKey.TrackAble;
+        private string attributeKey = AttributeKey.Inventory;
         
-        List<Item> items = null;
+        // List<Item> items = null;
+        Actor[] Items;
+        private int size;
 
         // private Point position;
         // private Point size;
@@ -21,8 +23,17 @@ namespace LocalLib.Casting
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public AttributeInventory()
+        public AttributeInventory(int size, Actor[] items = null)
         {
+            this.size = size;
+
+            if (items == null)
+            {
+                this.Items = items;
+            }else
+            {
+                this.Items = new Actor[size];;
+            }
         }
 
         public string GetAttributeKey()
@@ -34,19 +45,19 @@ namespace LocalLib.Casting
         // /// Gets the position. 
         // /// </summary>
         // /// <returns>The position.</returns>
-        // public Point GetPosition()
-        // {
-        //     return position;
-        // }
+        public Actor[] GetItems()
+        {
+            return Items;
+        }
 
         // /// <summary>
         // /// Gets a rectangle enclosing this body.
         // /// </summary>
         // /// <returns>The enclosing rectangle.</returns>
-        // public Rectangle GetRectangle()
-        // {
-        //     return new Rectangle(position, size);
-        // }
+        public int GetSize()
+        {
+            return size;
+        }
 
         // /// <summary>
         // /// Gets the size.

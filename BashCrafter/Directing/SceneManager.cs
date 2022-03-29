@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+
+using BashCrafter.clickActions;
+
 using LocalLib.Casting;
 using LocalLib.Scripting;
 using LocalLib.Scripting.Actions;
@@ -50,12 +53,14 @@ namespace BashCrafter.Directing
             LocalLib.Types.Texture Battler = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_Battler);
             LocalLib.Types.Texture Buttons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON);
             LocalLib.Types.Texture settings = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_settings);
+            LocalLib.Types.Texture play = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON_play);
 
 
             TexturesList.Add(settings);
             TexturesList.Add(Buttons);
             TexturesList.Add(Battler);
             TexturesList.Add(Icons);
+            TexturesList.Add(play);
         }
 
         public void PrepareScene(string scene, Stage stage)
@@ -140,11 +145,13 @@ namespace BashCrafter.Directing
 
 
             stage.ClearActions();
+            MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new testClicker_attribute());
 
             stage.addActionToScript("control", new ControlActorAction(KeyboardService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
-            stage.addActionToScript("COLISHION", new MouseMenuAction(MouseService));
+            stage.addActionToScript("COLISHION", mouseMenu);
+            // stage.addActionToScript("menu", new TestClick(mouseMenu, new testClicker_attribute()));
             stage.addActionToScript("move", new MoveActor(VideoService));
             stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             

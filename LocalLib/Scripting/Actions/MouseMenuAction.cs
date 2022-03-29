@@ -13,9 +13,11 @@ namespace LocalLib.Scripting.Actions
     public class MouseMenuAction : Action
     {
         private MouseService mouseService;
-        public MouseMenuAction(MouseService mouseService )
+        MenuCallback menucallback;
+        public MouseMenuAction(MouseService mouseService, MenuCallback menucallback )
         {
             this.mouseService = mouseService;
+            this.menucallback = menucallback;
         }
 
         /// <summary>
@@ -26,7 +28,7 @@ namespace LocalLib.Scripting.Actions
         /// <param name="script">The script of actions.</param>
             // bool mouseOverObject = false;
 
-        Dictionary<string, bool>  mouseOverObject = new Dictionary<string, bool>();
+        public Dictionary<string, bool>  mouseOverObject = new Dictionary<string, bool>();
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
                     // AttributeBody PlayerBody = (AttributeBody) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.body);
@@ -69,14 +71,27 @@ namespace LocalLib.Scripting.Actions
                         // Types.Color tmpColor = color.GetColor();
                         
                         // color.SetColor(new Color(200,200,0));
-                        if(mouseService.IsButtonDown("left")){
+                        if(mouseService.IsButtonPressed("left")){
                             animated.currentFrame = 2;
                             clickable.clickState = true;
+                            clickable.toggalSwitch();
+                        System.Console.WriteLine($"mswitch = {clickable.getSwitch()}");
+                            if(clickable.getSwitch())
+                            {
+                                menucallback.OnNext(forground);
+                            }else if(clickable.getPREVEUS_State())
+                            {
+                                
+                                menucallback.removeOnNext(forground);
+                            }
 
                             
                         }
-                        else 
+                        else {
                             animated.currentFrame = 1;
+                            // clickable.clickState = false;
+                        }
+
 
                         animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
                         mouseOverObject[item.ActorKey] = true;
@@ -87,6 +102,7 @@ namespace LocalLib.Scripting.Actions
 
                         animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
                         mouseOverObject[item.ActorKey] = false;
+                            // clickable.clickState = false;
 
                     }
                 }

@@ -42,7 +42,7 @@ namespace BashCrafter
 
         public const int Play_BOTTON_TextureID = 1;
         public static string TEXTURE_PATH_BUTTON_play = "Data/Textures/Button_play_2.0.png";
-        public static string TEXTURE_KEY_BUTTON_play = "Button_play_2.0";
+        public static string TEXTURE_KEY_BUTTON_play = "Button_play_2";
 
         public const int PLAYER_TextureID = 2;
         public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";

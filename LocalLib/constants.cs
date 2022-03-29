@@ -15,6 +15,12 @@ namespace LocalLib
         public static string Stage_Position = "stage_position";
         public static string health = "health";
 
+
+        // menu atributes
+        public static string testClicker_ = "testclick";
+        public static string Inventory = "Inventory";
+        public static string InventoryMenu = "InventoryMenu";
+
         
 
     }
