@@ -132,13 +132,13 @@ namespace BashCrafter.Directing
             // midground
             if (player == null)
             {
-                addcast.AddPlayer(stage.midground, new Point(0,0));
+                addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)-64));
             }else
             {
                 stage.midground.AddActor("player", player);
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 50; i++)
             {
             addcast.Addrock(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"Rock " + i);
             addcast.AddTree(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.TREE_LENGTH), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.TREE_HEIGHT)),"Tree " + i);

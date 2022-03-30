@@ -84,7 +84,7 @@ namespace LocalLib.Scripting.Actions
                                         health.damage();
                                         AttributeAnimated animated = (AttributeAnimated) item.GetActorAttribute(AttributeKey.animated);
                                         
-animated.currentFrame += 1;
+                                        animated.currentFrame += 1;
                                         animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
                                         
                                         if(health.getHealth() < 0)
