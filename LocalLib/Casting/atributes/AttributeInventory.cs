@@ -36,7 +36,11 @@ namespace LocalLib.Casting
                 for(int i = 0; i < size; i++)
                 {
                     Items[i] = new Actor("NULL");
+                    Items[i].AddAttribute(new AttributeBody(new Point(0,0), new Point(48, 48), 0));
+                    Items[i].AddAttribute(new AttributeColor(new Color(0,0,100)));
+                    Items[i].AddAttribute(new ItemStack());
                 }
+                
             }
         }
 
@@ -65,17 +69,37 @@ namespace LocalLib.Casting
 
         public void addItem(string itemKey, int amount = 1)
         {
+            bool hasItem = false;
             foreach (Actor actor in Items)
             {
-                System.Console.WriteLine($"actor key is null =  { actor == null}");
+                // System.Console.WriteLine($"actor key is null =  { actor == null}");
                 if(actor != null)
-                if(actor.ActorKey == itemKey)
                 {
-                    ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
-                    stack.StackSize += amount;
-                    break;
+                    if(actor.ActorKey == itemKey)
+                    {
+                        hasItem = true;
+                        ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
+                        stack.StackSize += amount;
+                        break;
+                    }
                 }
             }
+            if (!hasItem)
+            {
+                
+                foreach (Actor actor in Items)
+                {
+                    // System.Console.WriteLine($"actor ass items =  { actor == null}");
+                    if(actor.ActorKey.ToLower() == "null")
+                    {
+                        actor.ActorKey = itemKey;
+                        ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
+                        stack.StackSize += amount;
+                        break;
+                    }
+                }
+            }
+            
         }
         // /// <summary>
         // /// Gets the size.
