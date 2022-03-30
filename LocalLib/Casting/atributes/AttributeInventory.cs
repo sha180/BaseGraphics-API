@@ -40,6 +40,7 @@ namespace LocalLib.Casting
                     Items[i].AddAttribute(new AttributeColor(new Color(0,0,100)));
                     Items[i].AddAttribute(new ItemStack());
                 }
+                
             }
         }
 
