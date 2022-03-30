@@ -67,7 +67,6 @@ namespace LocalLib.Scripting
                         // playBody.SetSpeed(100.0f);
                         // playBody.SetPosition(new Point(playerX, itemY));
                         Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
-                        Console.WriteLine($"Player X {playerX.ToString()} Item X {itemX.ToString()}");
                     }
                 }
             }

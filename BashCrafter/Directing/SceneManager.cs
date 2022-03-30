@@ -22,7 +22,7 @@ namespace BashCrafter.Directing
         public static AudioService AudioService = new RaylibAudioService();
         public static KeyboardService KeyboardService = new RaylibKeyboardService();
         public static VideoService VideoService = new RaylibVideoService(PROGRAM_SETTINGS.GAME_NAME,
-                    PROGRAM_SETTINGS.SCREEN_WIDTH, PROGRAM_SETTINGS.SCREEN_HEIGHT, PROGRAM_SETTINGS.WHITE);
+                    PROGRAM_SETTINGS.SCREEN_WIDTH, PROGRAM_SETTINGS.SCREEN_HEIGHT, PROGRAM_SETTINGS.WHITE, true);
 
         public static MouseService MouseService = new RaylibMouseService();
         public static PhysicsService PhysicsService = new RaylibPhysicsService();

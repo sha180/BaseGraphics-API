@@ -13,6 +13,7 @@ namespace LocalLib.Services
         private int height;
         private string title;
         private int width;
+        private bool debug = false;
 
         Camera2D camera;
         private Dictionary<string, Raylib_cs.Font> fonts
@@ -21,7 +22,7 @@ namespace LocalLib.Services
         private Dictionary<string, Raylib_cs.Texture2D> textures
             = new Dictionary<string, Raylib_cs.Texture2D>();
         
-        public RaylibVideoService(string title, int width, int height, Types.Color color)
+        public RaylibVideoService(string title, int width, int height, Types.Color color, bool debug = false)
         {
             this.title = title;
             this.width = width;
@@ -50,6 +51,7 @@ namespace LocalLib.Services
             {
                 Raylib.BeginMode2D(camera);
             }
+            DrawGrid();
         }
 
 
@@ -255,6 +257,20 @@ namespace LocalLib.Services
             int height = rectangle.GetSize().GetY();
 
             return new Rectangle(x,y,width,height);
+        }
+        public void DrawGrid()
+        {
+            if (debug)
+            {
+            for (int x = 0; x < PROGRAM_SETTINGS.MAP_X; x += PROGRAM_SETTINGS.CELL_SIZE)
+            {
+                Raylib.DrawLine(x, 0, x, PROGRAM_SETTINGS.MAP_Y, Raylib_cs.Color.GRAY);
+            }
+            for (int y = 0; y < PROGRAM_SETTINGS.MAP_Y; y += PROGRAM_SETTINGS.CELL_SIZE)
+            {
+                Raylib.DrawLine(0, y, PROGRAM_SETTINGS.MAP_X, y, Raylib_cs.Color.GRAY);
+            }
+            }
         }
     }
 }
