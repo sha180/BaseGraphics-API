@@ -93,6 +93,8 @@ namespace LocalLib.Services
 
         
         public void UpdateCameraPosition(Types.Point possition, Types.Point size);
+
+        public void DrawGrid();
     }
 
 }
