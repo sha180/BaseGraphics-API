@@ -80,9 +80,14 @@ namespace LocalLib
         public static Color BLACK = new Color(0, 0, 0);
         public static Color WHITE = new Color(255, 255, 255);
         public static Color PURPLE = new Color(255, 0, 255);
-        public static Color GREEN = new Color(86, 255, 70);
+        public static Color GREEN = new Color(86, 125, 70);
 
         // KEYS
+        public static string A = "a";
+        public static string D = "d";
+        public static string W = "w";
+        public static string S = "s";
+
         public static string LEFT = "left";
         public static string RIGHT = "right";
         public static string UP = "up";
