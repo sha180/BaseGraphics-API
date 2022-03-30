@@ -122,7 +122,7 @@ namespace BashCrafter.Directing
             // background
             Actor background = new Actor("background");
             background.AddAttribute(new AttributeBody(new Point(0,0), new Point(PROGRAM_SETTINGS.MAP_X,PROGRAM_SETTINGS.MAP_Y), 0));
-            background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+            background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.GREEN));
 
             stage.background.AddActor("background", background);
 
