@@ -120,7 +120,7 @@ namespace LocalLib.Scripting.Actions
                                 AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
                                 // Types.Color tmpColor = color.GetColor();
                                 
-                                color.SetColor(new Color(200,200,0));
+                                // color.SetColor(new Color(200,200,0));
 
                             }
                             mouseOverObject[item.ActorKey] = true;
