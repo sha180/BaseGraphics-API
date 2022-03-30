@@ -74,12 +74,27 @@ namespace BashCrafter
             enemy.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
             enemy.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
             enemy.AddAttribute(new AttributeHealth(5));
-            enemy.AddAttribute(new AttributeClickable());
+            //enemy.AddAttribute(new AttributeClickable());
             //enemy.AddAttribute(new AttributeInventory(invSize, items));
             enemy.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ENEMY, new Point(64, 64)));
             //enemy.AddAttribute(new AttributeAnimated(new Point(128, 135), 5));
 
             cast.AddActor("enemy", enemy);
+
+        }
+        public void AddAirship(Cast cast, Point poisition, string ActorKey)
+        {
+            
+            Actor airship = new Actor(ActorKey);
+            airship.AddAttribute(new AttributeBody(poisition, new Point(256, 256), 0));
+            airship.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
+            airship.AddAttribute(new AttributeHealth(5));
+            //airship.AddAttribute(new AttributeClickable());
+            airship.AddAttribute(new AttributeInventory(2));
+            airship.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_AIRSHIP, new Point(64, 64)));
+            //enemy.AddAttribute(new AttributeAnimated(new Point(128, 135), 5));
+
+            cast.AddActor("airship", airship);
 
         }
     }
