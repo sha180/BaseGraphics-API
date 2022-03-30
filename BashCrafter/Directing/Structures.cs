@@ -76,5 +76,9 @@ namespace BashCrafter
         public const int Enemy_TextureID = 7;
         public static string TEXTURE_PATH_ENEMY = "Data/Textures/golem.png";
         public static string TEXTURE_KEY_ENEMY = "golem";
+
+        public const int Airship_TextureID = 8;
+        public static string TEXTURE_PATH_AIRSHIP = "Data/Textures/airship.png";
+        public static string TEXTURE_KEY_AIRSHIP = "airship";
     }
 }
