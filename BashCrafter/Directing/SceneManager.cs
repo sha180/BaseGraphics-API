@@ -56,6 +56,8 @@ namespace BashCrafter.Directing
             LocalLib.Types.Texture play = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON_play);
             LocalLib.Types.Texture tree = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_TREE);
             LocalLib.Types.Texture rock = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ROCK);
+            LocalLib.Types.Texture enemy = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ENEMY);
+
 
 
             TexturesList.Add(settings);
@@ -65,6 +67,7 @@ namespace BashCrafter.Directing
             TexturesList.Add(play);
             TexturesList.Add(tree);
             TexturesList.Add(rock);
+            TexturesList.Add(enemy);
         }
 
         public void PrepareScene(string scene, Stage stage)
@@ -139,8 +142,8 @@ namespace BashCrafter.Directing
             {
             addcast.Addrock(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"Rock " + i);
             addcast.AddTree(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.TREE_LENGTH), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.TREE_HEIGHT)),"Tree " + i);
-            }
-
+            
+            addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"enemy " + i);}
             // forground
             menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 

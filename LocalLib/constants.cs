@@ -105,7 +105,7 @@ namespace LocalLib
         public static int BASE_LEVELS = 5;
 
         // ACTORS
-        public static int TREE_HEIGHT = 128;
+        public static int TREE_HEIGHT = 54;
         public static int TREE_LENGTH = 64;
         public static int ROCK_DIMENSIONS = 50;
         
