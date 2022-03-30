@@ -143,14 +143,14 @@ namespace BashCrafter.Directing
 
             for (int i = 0; i < 50; i++)
             {
-                System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
+                // System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
             addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
             addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
             }
             
-            /*for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 50; i++)
             {addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"enemy " + i);}
-            addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");*/
+            addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
             // forground
             menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 
