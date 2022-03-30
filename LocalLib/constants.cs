@@ -5,6 +5,7 @@ namespace LocalLib
 {
     public struct AttributeKey
     {
+        public static string text = "text";
         public static string body = "body";
         public static string color = "color";
         public static string texture = "texture";
@@ -24,21 +25,9 @@ namespace LocalLib
         
 
     }
-    public struct StagePositon
+    public struct ItemAttributeKey
     {
-        public const int forground = 2;
-        public const int midground = 1;
-        public const int background = 0;
-    }
-    public class Prioratry
-    {
-        int none = 0;
-        int low = 1;
-        int mid = 10;
-        int high = 100;
-
-
-
+        public static string Stack = "stack";
     }
     //     public class TextureKey
     // {
@@ -64,6 +53,9 @@ namespace LocalLib
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
         public static int MAP_X = 1000;
         public static int MAP_Y = 1000;
+
+        public static int GRID_X = 64;
+        public static int GRID_Y = 64;
 
         // FIELD
         public static int FIELD_TOP = 60;

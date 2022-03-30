@@ -1,5 +1,6 @@
 using LocalLib.Casting;
 using LocalLib.Services;
+using LocalLib.Types;
 
 namespace LocalLib.Scripting.Actions
 {
@@ -48,6 +49,18 @@ namespace LocalLib.Scripting.Actions
                     }else{
                         // AttributeTexture texture = (AttributeTexture)item.GetActorAttribute(AttributeKey.texture);
                         videoService.DrawRectangle(body.GetSize(), body.GetPosition(), ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor(), true);
+                    } 
+                    
+                    if(item.HasAttribute(ItemAttributeKey.Stack))
+                    {
+                        ItemStack stack = (ItemStack) item.GetActorAttribute(ItemAttributeKey.Stack);
+                        Point position = body.GetPosition();//stack.StackSize.ToString()
+                        Point newPoint = new Point(position.x,position.y);
+
+                        newPoint.x = body.GetSize().x + 20 + position.x;
+                        Text text = new Text(stack.StackSize.ToString(), PROGRAM_SETTINGS.FONT_FILE, 48, 0,
+                            item.HasAttribute(AttributeKey.color) ? ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor() : new Types.Color(255,255,255));
+                        videoService.DrawText(text, newPoint);
                     }
                 }
             }

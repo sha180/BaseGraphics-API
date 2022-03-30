@@ -10,14 +10,12 @@ namespace LocalLib.Scripting.Actions
     /// <summary>
     /// A thing that is done in the game.
     /// </summary>
-    public class MouseMenuAction : Action
+    public class MouseObjectAction : Action
     {
         private MouseService mouseService;
-        MenuCallback menucallback;
-        public MouseMenuAction(MouseService mouseService, MenuCallback menucallback )
+        public MouseObjectAction(MouseService mouseService )
         {
             this.mouseService = mouseService;
-            this.menucallback = menucallback;
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace LocalLib.Scripting.Actions
                     //     // color.SetColor(new Color(200,200,0));
                     // }
         
-            foreach (Actor item in forground.GetAllActors())
+            foreach (Actor item in midground.GetAllActors())
             {
 
                 if (item.HasAttribute(AttributeKey.clickable))
@@ -62,46 +60,57 @@ namespace LocalLib.Scripting.Actions
                         // System.Console.WriteLine(mouseService.IsMouseOverBox(body.GetRectangle(), new Point(0,0)));
                     bool mouseOver = mouseOverObject[item.ActorKey];
                     AttributeClickable clickable = (AttributeClickable) item.GetActorAttribute(AttributeKey.clickable);
-                        AttributeAnimated animated = (AttributeAnimated) item.GetActorAttribute(AttributeKey.animated);
+                        // AttributeAnimated animated = (AttributeAnimated) item.GetActorAttribute(AttributeKey.animated);
 
                     if(mouseService.IsMouseOverButton(body.GetRectangle()) && item.HasAttribute(AttributeKey.color))
                     {
-                        // System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
                         // AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
                         // Types.Color tmpColor = color.GetColor();
                         
                         // color.SetColor(new Color(200,200,0));
                         if(mouseService.IsButtonPressed("left")){
-                            animated.currentFrame = 2;
+                            // animated.currentFrame = 2;
                             clickable.clickState = true;
                             clickable.toggalSwitch();
                         System.Console.WriteLine($"mswitch = {clickable.getSwitch()}");
-                            if(clickable.getSwitch())
+                            // if(clickable.getSwitch())
+                            // {
+                            if (item.HasAttribute(AttributeKey.health))
                             {
-                                menucallback.OnNext(forground, midground.GetFirstActor("player"));
-                            }else if(clickable.getPREVEUS_State())
-                            {
-                                
-                                menucallback.removeOnNext(forground);
+                                AttributeHealth health = 
+                                    (AttributeHealth) item.GetActorAttribute(AttributeKey.health);
+                                    health.damage();
+                                    if(health.getHealth() < 1)
+                                    {
+                        System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
+
+                                        midground.RemoveActor("tree", item);
+                                    }
                             }
+                                // menucallback.OnNext(forground, midground.GetFirstActor("player"));
+                            // }else if(clickable.getPREVEUS_State())
+                            // {
+                                
+                            //     // menucallback.removeOnNext(forground);
+                            // }
                             
 
                             
                         }
                         else {
-                            animated.currentFrame = 1;
+                            // animated.currentFrame = 1;
                             // clickable.clickState = false;
                         }
 
 
-                        animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
+                        // animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
                         mouseOverObject[item.ActorKey] = true;
                         
                     }else if (!mouseService.IsMouseOverButton(body.GetRectangle()) && mouseOver)
                     {
-                        animated.currentFrame = 0;
+                        // animated.currentFrame = 0;
 
-                        animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
+                        // animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
                         mouseOverObject[item.ActorKey] = false;
                             // clickable.clickState = false;
 

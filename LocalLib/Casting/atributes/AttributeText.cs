@@ -7,25 +7,24 @@ namespace  LocalLib.Casting
     /// <summary>
     /// A thing that participates in the game.
     /// </summary>
-    public class AttributeTexture : Attribute
+    public class AttributeText : Attribute
     {
         
-        private string attributeKey = AttributeKey.texture;
+        private string attributeKey = AttributeKey.text;
 
         private string textureKey;
 
         // private Image image;
 
         public Rectangle TextureBounds;
-        private TextureType textureType;
+        public string text;
 
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public AttributeTexture(string textureKey, Point size = null)
+        public AttributeText()
         {
-            TextureBounds = new Rectangle(new Point(0, 0), size == null ? new Point(0, 0) : size);
-            this.textureKey = textureKey;
+            TextureBounds = new Rectangle(new Point(0, 0), new Point(0, 0));
         }
 
         public string GetAttributeKey()

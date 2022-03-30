@@ -10,10 +10,14 @@ namespace LocalLib.Scripting.Actions
     public class ControlActorAction : Action
     {
         
+        private VideoService videoService;
         private KeyboardService keyboardService;
-
-        public ControlActorAction(KeyboardService keyboardService)
+private int framesCounter = 0;
+    int currentFrame = 0;
+    int framesSpeed = 4;
+        public ControlActorAction(KeyboardService keyboardService, VideoService videoService)
         {
+            this.videoService = videoService;
             this.keyboardService = keyboardService;
         }
 
@@ -25,8 +29,24 @@ namespace LocalLib.Scripting.Actions
         /// <param name="script">The script of actions.</param>
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
+                     framesCounter++;
             foreach (Actor item in midground.GetAllActors())
             {
+                    if (item.HasAttribute(AttributeKey.animated))
+                    {
+                        AttributeAnimated animated = (AttributeAnimated) item.GetActorAttribute(AttributeKey.animated);
+                       
+                        if (framesCounter >= (PROGRAM_SETTINGS.FRAME_RATE/framesSpeed))
+                        {
+                            framesCounter = 0;
+                            animated.currentFrame++;
+
+                            if (animated.currentFrame > animated.frames - 1) animated.currentFrame = 0;
+
+                            animated.TextureBounds.position.x = animated.currentFrame*animated.TextureBounds.size.x;
+                        // System.Console.WriteLine("animated == " + animated.TextureBounds.position.x );
+                        }
+                    }
 
                 if (item.HasAttribute(AttributeKey.body) && midground.GetFirstActor("player") == item)
                 {

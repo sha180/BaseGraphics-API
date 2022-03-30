@@ -33,7 +33,17 @@ namespace BashCrafter
         RULES,
         END
     }
+    public enum Items
+    {
+        WOOD,
+        STONE
+    }
 
+    public enum Tools
+    {
+        Pickaxe,
+        Axe
+    }
     public static class TextureRegistry
     {
         public  const int ICONS_TextureID = 0;
@@ -53,9 +63,15 @@ namespace BashCrafter
         public static string TEXTURE_PATH_settings = "Data/Textures/Button_Settings.png";
         public static string TEXTURE_KEY_settings = "Button_Settings";
 
-
         public const int BOTTON_TextureID = 4;
         public static string TEXTURE_PATH_BUTTON = "Data/Textures/Button.png";
         public static string TEXTURE_KEY_BUTTON = "Button";
+
+        public const int TREE_TextureID = 5;
+        public static string TEXTURE_PATH_TREE = "Data/Textures/tree1B_ss.png";
+        public static string TEXTURE_KEY_TREE = "tree1B_ss";
+        public const int ROCK_TextureID = 6;
+        public static string TEXTURE_PATH_ROCK = "Data/Textures/rocks-2.png";
+        public static string TEXTURE_KEY_ROCK = "rocks-2";
     }
 }

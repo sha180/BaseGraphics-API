@@ -7,25 +7,18 @@ namespace  LocalLib.Casting
     /// <summary>
     /// A thing that participates in the game.
     /// </summary>
-    public class AttributeTexture : Attribute
+    public class ItemStack : Attribute
     {
         
-        private string attributeKey = AttributeKey.texture;
-
-        private string textureKey;
-
-        // private Image image;
-
-        public Rectangle TextureBounds;
-        private TextureType textureType;
+        private string attributeKey = ItemAttributeKey.Stack;
+        public int StackSize;
 
         /// <summary>
         /// Constructs a new instance of Actor.
         /// </summary>
-        public AttributeTexture(string textureKey, Point size = null)
+        public ItemStack(int StackSize = 0)
         {
-            TextureBounds = new Rectangle(new Point(0, 0), size == null ? new Point(0, 0) : size);
-            this.textureKey = textureKey;
+            this.StackSize = StackSize;
         }
 
         public string GetAttributeKey()
@@ -37,11 +30,6 @@ namespace  LocalLib.Casting
         /// Gets the key to represint the data.
         /// </summary>
         /// <returns>The color.</returns>
-        public string GetTextureKey()
-        {
-            return textureKey;
-        }
-
 
         /// <summary>
         /// Sets the color to the given value.

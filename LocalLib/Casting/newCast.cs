@@ -120,5 +120,13 @@ namespace LocalLib.Casting
         {
             actors.Clear();
         }
+
+        public void clearGroup(string group)
+        {
+            if (actors.ContainsKey(group))
+            {
+                actors.Remove(group);
+            }
+        }
     }
 }

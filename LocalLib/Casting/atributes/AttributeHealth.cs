@@ -30,6 +30,14 @@ namespace LocalLib.Casting
         {
             return attributeKey;
         }
+        public int getHealth()
+        {
+            return health;
+        }
+        public void damage()
+        {
+            health -= 1;
+        }
 
     }
 }

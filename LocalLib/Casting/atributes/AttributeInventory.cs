@@ -27,12 +27,16 @@ namespace LocalLib.Casting
         {
             this.size = size;
 
-            if (items == null)
+            if (items != null)
             {
                 this.Items = items;
             }else
             {
-                this.Items = new Actor[size];;
+                this.Items = new Actor[size];
+                for(int i = 0; i < size; i++)
+                {
+                    Items[i] = new Actor("NULL");
+                }
             }
         }
 
@@ -59,6 +63,20 @@ namespace LocalLib.Casting
             return size;
         }
 
+        public void addItem(string itemKey, int amount = 1)
+        {
+            foreach (Actor actor in Items)
+            {
+                System.Console.WriteLine($"actor key is null =  { actor == null}");
+                if(actor != null)
+                if(actor.ActorKey == itemKey)
+                {
+                    ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
+                    stack.StackSize += amount;
+                    break;
+                }
+            }
+        }
         // /// <summary>
         // /// Gets the size.
         // /// </summary>

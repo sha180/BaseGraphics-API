@@ -54,6 +54,8 @@ namespace BashCrafter.Directing
             LocalLib.Types.Texture Buttons = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON);
             LocalLib.Types.Texture settings = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_settings);
             LocalLib.Types.Texture play = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON_play);
+            LocalLib.Types.Texture tree = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_TREE);
+            LocalLib.Types.Texture rock = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ROCK);
 
 
             TexturesList.Add(settings);
@@ -61,6 +63,8 @@ namespace BashCrafter.Directing
             TexturesList.Add(Battler);
             TexturesList.Add(Icons);
             TexturesList.Add(play);
+            TexturesList.Add(tree);
+            TexturesList.Add(rock);
         }
 
         public void PrepareScene(string scene, Stage stage)
@@ -130,6 +134,7 @@ namespace BashCrafter.Directing
             {
                 stage.midground.AddActor("player", player);
             }
+
             for (int i = 0; i < 5; i++)
             {
             addcast.Addrock(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"Rock " + i);
@@ -145,12 +150,14 @@ namespace BashCrafter.Directing
 
 
             stage.ClearActions();
-            MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new testClicker_attribute());
+            MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
 
-            stage.addActionToScript("control", new ControlActorAction(KeyboardService));
+            stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
             stage.addActionToScript("COLISHION", mouseMenu);
+            // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
+
             // stage.addActionToScript("menu", new TestClick(mouseMenu, new testClicker_attribute()));
             stage.addActionToScript("move", new MoveActor(VideoService));
             stage.addActionToScript("camera", new MoveCameraAction(VideoService));
@@ -195,7 +202,7 @@ stage.ClearCast();
             backdrop.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
             backdrop.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
 
-            stage.background.AddActor("background", backdrop);
+            // stage.background.AddActor("background", backdrop);
 
             // midground
             
@@ -214,7 +221,7 @@ stage.ClearCast();
             // setup Actions
             stage.ClearActions();
 
-            stage.addActionToScript("control", new ControlActorAction(KeyboardService));
+            stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
             stage.addActionToScript("move", new MoveActor(VideoService));

@@ -25,6 +25,8 @@ namespace LocalLib.Casting
         {
             clickState = false;
             toggal = false;
+            PREVEUS_State = false;
+            PREVEUS_State_2 = false;
         }
 
         public string GetAttributeKey()

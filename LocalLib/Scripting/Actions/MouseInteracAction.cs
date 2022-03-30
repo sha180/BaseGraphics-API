@@ -65,11 +65,64 @@ namespace LocalLib.Scripting.Actions
                         bool mouseOver = mouseOverObject[item.ActorKey];
                         if(mouseService.IsMouseOverBox(body.GetRectangle(), PlayerPosition) && item.HasAttribute(AttributeKey.color))
                         {
-                            // System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
-                            AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
-                            // Types.Color tmpColor = color.GetColor();
-                            
-                            color.SetColor(new Color(200,200,0));
+                            if (item.HasAttribute(AttributeKey.clickable))
+                            {
+                    AttributeClickable clickable = (AttributeClickable) item.GetActorAttribute(AttributeKey.clickable);
+                                if(mouseService.IsButtonPressed("left")){
+                                    // animated.currentFrame = 2;
+                                    clickable.clickState = true;
+                                    clickable.toggalSwitch();
+                                    if(clickable.getPREVEUS_State())
+                                    {
+                                System.Console.WriteLine($"mswitch {item.ActorKey} = {clickable.getPREVEUS_State()}");
+                                    
+                                    if (item.HasAttribute(AttributeKey.health))
+                                    {
+                                        AttributeHealth health = 
+                                            (AttributeHealth) item.GetActorAttribute(AttributeKey.health);
+                                        
+                                        health.damage();
+                                        AttributeAnimated animated = (AttributeAnimated) item.GetActorAttribute(AttributeKey.animated);
+                                        
+animated.currentFrame += 1;
+                                        animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
+                                        
+                                        if(health.getHealth() < 0)
+                                        {
+                                            System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
+                                            AttributeInventory inventoryPlayer = (AttributeInventory) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.Inventory);
+                                            AttributeInventory inventoryItem = (AttributeInventory) item.GetActorAttribute(AttributeKey.Inventory);
+                                            foreach(Actor actor in inventoryItem.GetItems())
+                                            {
+                                                inventoryPlayer.addItem(actor.ActorKey);
+                                                string aray = "";
+
+                                                foreach (char CHAR in item.ActorKey)
+                                                {
+                                                    if( CHAR == ' ')
+                                                    {
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        aray += CHAR;
+                                                    }
+                                                }
+                                                midground.RemoveActor(aray.ToLower(), item);
+                                            }
+                                        }
+                                    }
+                                    }
+                                }
+                            }
+                            else{
+                                // System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
+                                AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
+                                // Types.Color tmpColor = color.GetColor();
+                                
+                                color.SetColor(new Color(200,200,0));
+
+                            }
                             mouseOverObject[item.ActorKey] = true;
                             
                         }else if (!mouseService.IsMouseOverBox(body.GetRectangle(), PlayerPosition) && mouseOver)
