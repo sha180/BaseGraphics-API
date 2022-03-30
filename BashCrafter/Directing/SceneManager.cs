@@ -56,6 +56,8 @@ namespace BashCrafter.Directing
             LocalLib.Types.Texture play = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_BUTTON_play);
             LocalLib.Types.Texture tree = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_TREE);
             LocalLib.Types.Texture rock = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ROCK);
+            LocalLib.Types.Texture enemy = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ENEMY);
+
 
 
             TexturesList.Add(settings);
@@ -65,6 +67,7 @@ namespace BashCrafter.Directing
             TexturesList.Add(play);
             TexturesList.Add(tree);
             TexturesList.Add(rock);
+            TexturesList.Add(enemy);
         }
 
         public void PrepareScene(string scene, Stage stage)
@@ -129,13 +132,13 @@ namespace BashCrafter.Directing
             // midground
             if (player == null)
             {
-                addcast.AddPlayer(stage.midground, new Point(0,0));
+                addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)-64));
             }else
             {
                 stage.midground.AddActor("player", player);
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 50; i++)
             {
                 System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
             addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);

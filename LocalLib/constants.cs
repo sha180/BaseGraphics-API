@@ -48,8 +48,13 @@ namespace LocalLib
         public static int SCREEN_HEIGHT = 680;
         public static int CENTER_X = SCREEN_WIDTH / 2;
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
+<<<<<<< HEAD
         public static int MAP_X = 1000;
         public static int MAP_Y = 1000;
+=======
+        public static int MAP_X = 4000;
+        public static int MAP_Y = 4000;
+>>>>>>> 22d72943e464c8b90650abcaba3320e26509d36b
         public static int CELL_SIZE = 64;
 
         public static int GRID_X = 64;

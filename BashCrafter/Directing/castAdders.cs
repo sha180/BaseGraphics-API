@@ -64,5 +64,23 @@ namespace BashCrafter
             
             cast.AddActor("player", actor);
         }
+        public void AddEnemy(Cast cast, Point poisition, string ActorKey)
+        {
+            //  int invSize = 1;
+            // Actor[] items = new Actor[invSize];
+            // items[0] = item.AddStone();
+
+            Actor enemy = new Actor(ActorKey);
+            enemy.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
+            enemy.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
+            enemy.AddAttribute(new AttributeHealth(5));
+            enemy.AddAttribute(new AttributeClickable());
+            //enemy.AddAttribute(new AttributeInventory(invSize, items));
+            enemy.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ENEMY, new Point(64, 64)));
+            //enemy.AddAttribute(new AttributeAnimated(new Point(128, 135), 5));
+
+            cast.AddActor("enemy", enemy);
+
+        }
     }
 }
