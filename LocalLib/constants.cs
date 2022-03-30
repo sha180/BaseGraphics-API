@@ -21,9 +21,6 @@ namespace LocalLib
         public static string testClicker_ = "testclick";
         public static string Inventory = "Inventory";
         public static string InventoryMenu = "InventoryMenu";
-
-        
-
     }
     public struct ItemAttributeKey
     {
