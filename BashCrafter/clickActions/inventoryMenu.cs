@@ -81,7 +81,7 @@ namespace BashCrafter.clickActions
 
             background = new Actor("inv_background");
             background.AddAttribute(new AttributeBody(new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/8 , PROGRAM_SETTINGS.SCREEN_HEIGHT/8 ), zero));
-            background.AddAttribute(new AttributeColor(new Color(150,150,150)));
+            background.AddAttribute(new AttributeColor(new Color(150,150,150, 190)));
             // background.AddAttribute();
             // background.AddAttribute();
 
