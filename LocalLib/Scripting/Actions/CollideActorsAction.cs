@@ -10,6 +10,7 @@ namespace LocalLib.Scripting
         private AudioService audioService;
         private PhysicsService physicsService;
         private VideoService videoService;
+        private RaylibKeyboardService KeyboardServices = new RaylibKeyboardService();
         
         public CollideActorsAction(PhysicsService physicsService, AudioService audioService, VideoService videoService)
         {
@@ -46,8 +47,25 @@ namespace LocalLib.Scripting
                 {
                     if (item != player)
                     {
+                        if (KeyboardServices.IsKeyDown("left"))
+                        {
+                            playBody.SetVelocity(new Point(10,0));
+                            // playBody.SetSpeed(0.0f);
+                        }
+                        if (KeyboardServices.IsKeyDown("right"))
+                        {
+                            playBody.SetVelocity(new Point(-10,0));
+                        }
+                        if (KeyboardServices.IsKeyDown("down"))
+                        {
+                            playBody.SetVelocity(new Point(0,-10));
+                        }
+                        if (KeyboardServices.IsKeyDown("up"))
+                        {
+                            playBody.SetVelocity(new Point(0,10));
+                        }
                         // playBody.SetSpeed(100.0f);
-                        playBody.SetPosition(new Point(playerX, itemY));
+                        // playBody.SetPosition(new Point(playerX, itemY));
                         Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
                         Console.WriteLine($"Player X {playerX.ToString()} Item X {itemX.ToString()}");
                     }
