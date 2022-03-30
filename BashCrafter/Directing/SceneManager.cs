@@ -137,8 +137,9 @@ namespace BashCrafter.Directing
 
             for (int i = 0; i < 5; i++)
             {
-            addcast.Addrock(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.ROCK_DIMENSIONS), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.ROCK_DIMENSIONS)),"Rock " + i);
-            addcast.AddTree(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.TREE_LENGTH), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.TREE_HEIGHT)),"Tree " + i);
+                System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
+            addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
+            addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
             }
 
             // forground

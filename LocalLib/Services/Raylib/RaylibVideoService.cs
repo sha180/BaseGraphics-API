@@ -47,11 +47,11 @@ namespace LocalLib.Services
             Raylib_cs.Color background = ToRaylibColor(color);
             Raylib.BeginDrawing();
             Raylib.ClearBackground(background);
+            DrawGrid();
             if (CameraTracking)
             {
                 Raylib.BeginMode2D(camera);
             }
-            DrawGrid();
         }
 
 
@@ -260,7 +260,7 @@ namespace LocalLib.Services
         }
         public void DrawGrid()
         {
-            if (debug)
+            if (true)
             {
             for (int x = 0; x < PROGRAM_SETTINGS.MAP_X; x += PROGRAM_SETTINGS.CELL_SIZE)
             {

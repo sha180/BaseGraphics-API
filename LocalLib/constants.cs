@@ -50,7 +50,7 @@ namespace LocalLib
         public static int CENTER_Y = SCREEN_HEIGHT / 2;
         public static int MAP_X = 1000;
         public static int MAP_Y = 1000;
-        public static int CELL_SIZE = 1000;
+        public static int CELL_SIZE = 64;
 
         public static int GRID_X = 64;
         public static int GRID_Y = 64;
@@ -106,9 +106,9 @@ namespace LocalLib
         public static int BASE_LEVELS = 5;
 
         // ACTORS
-        public static int TREE_HEIGHT = 128;
+        public static int TREE_HEIGHT = 64;
         public static int TREE_LENGTH = 64;
-        public static int ROCK_DIMENSIONS = 50;
+        public static int ROCK_DIMENSIONS = 64;
         
 
     public static string DATA_PATH = "Data/messages.txt";
