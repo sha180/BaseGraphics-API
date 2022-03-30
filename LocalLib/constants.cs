@@ -83,10 +83,10 @@ namespace LocalLib
         public static Color GREEN = new Color(86, 255, 70);
 
         // KEYS
-        public static string LEFT = "left";
-        public static string RIGHT = "right";
-        public static string UP = "up";
-        public static string DOWN = "down";
+        public static string LEFT = "a";
+        public static string RIGHT = "d";
+        public static string UP = "w";
+        public static string DOWN = "s";
         public static string SPACE = "space";
         public static string ENTER = "enter";
         public static string PAUSE = "p";
