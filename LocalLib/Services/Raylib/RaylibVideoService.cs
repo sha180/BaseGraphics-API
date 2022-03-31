@@ -123,7 +123,7 @@ namespace LocalLib.Services
             x = RecalcuteTextPosition(font, value, size, x, alignment);
             Raylib_cs.Color raylibColor = ToRaylibColor(color);
             Vector2 vector = new Vector2(x, y);
-            Raylib.DrawTextEx(font, value, vector, size, 0, raylibColor);
+            Raylib.DrawTextEx(font, value, vector, size, 5, raylibColor);
         }
 
         /// </inheritdoc>
@@ -137,6 +137,7 @@ namespace LocalLib.Services
         {
             Raylib.InitWindow(width, height, title);
             Raylib.SetTargetFPS(PROGRAM_SETTINGS.FRAME_RATE);
+            Raylib.SetExitKey(0);  
 
         }
         

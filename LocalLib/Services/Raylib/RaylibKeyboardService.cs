@@ -49,6 +49,7 @@ namespace LocalLib.Services
             { "up", Raylib_cs.KeyboardKey.KEY_UP },
             { "down", Raylib_cs.KeyboardKey.KEY_DOWN },
             { "enter", Raylib_cs.KeyboardKey.KEY_ENTER },
+            { "escape", Raylib_cs.KeyboardKey.KEY_ESCAPE },
             { "space", Raylib_cs.KeyboardKey.KEY_SPACE }
         };
         
