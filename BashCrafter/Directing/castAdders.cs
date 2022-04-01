@@ -88,7 +88,7 @@ namespace BashCrafter
             Actor airship = new Actor(ActorKey);
             airship.AddAttribute(new AttributeBody(poisition, new Point(256, 256), 0));
             airship.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            airship.AddAttribute(new AttributeHealth(5));
+            airship.AddAttribute(new AttributeHealth(500));
             //airship.AddAttribute(new AttributeClickable());
             airship.AddAttribute(new AttributeInventory(2));
             airship.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_AIRSHIP, new Point(64, 64)));
@@ -96,6 +96,17 @@ namespace BashCrafter
 
             cast.AddActor("airship", airship);
 
+        }
+
+        public void AddGrass(Cast cast, Point poisition, string ActorKey)
+        {
+           Actor grass = new Actor(ActorKey);
+            grass.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
+            grass.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
+            grass.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_GRASS, new Point(5, 15)));
+            //enemy.AddAttribute(new AttributeAnimated(new Point(5, 15), 5));
+
+            cast.AddActor("grass", grass); 
         }
     }
 }

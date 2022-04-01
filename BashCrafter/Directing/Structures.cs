@@ -81,7 +81,7 @@ namespace BashCrafter
         public static string TEXTURE_PATH_AIRSHIP = "Data/Textures/airship.png";
         public static string TEXTURE_KEY_AIRSHIP = "airship";
         public const int Grass_TextureID = 9;
-        public static string TEXTURE_PATH_Grass = "Data/Textures/grass.png";
-        public static string TEXTURE_KEY_Grass = "grass";
+        public static string TEXTURE_PATH_GRASS = "Data/Textures/grass.png";
+        public static string TEXTURE_KEY_GRASS = "grass";
     }
 }
