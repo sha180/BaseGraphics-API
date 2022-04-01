@@ -149,14 +149,14 @@ namespace LocalLib.Services
         }
 
         /// </inheritdoc>
-        public void UpdateCameraPosition(Types.Point possition, Types.Point size)
+        public void UpdateCameraPosition(Types.Point possition, Types.Point size, Types.Point offset)
         {
             Types.Point pos = possition;
             pos.Add( new Types.Point(pos.GetX() + (size.GetX()/2), pos.GetY() + (size.GetY()/2)));
             Vector2 Vpos = pos.ToVector2();
 
             camera.target = Vpos;
-            camera.offset = new Vector2(PROGRAM_SETTINGS.SCREEN_WIDTH/2.0f, PROGRAM_SETTINGS.SCREEN_HEIGHT/2.0f );
+            camera.offset = offset.ToVector2();
             camera.rotation = 0.0f;
             camera.zoom = 1.0f;
         }

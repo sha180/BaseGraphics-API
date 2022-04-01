@@ -2,6 +2,7 @@ using LocalLib.Casting;
 using LocalLib.Services;
 using LocalLib.Types;
 
+
 namespace LocalLib.Scripting.Actions
 {
     /// <summary>
@@ -10,6 +11,7 @@ namespace LocalLib.Scripting.Actions
     public class MoveCameraAction : Action
     {
         private VideoService videoService;
+        
         public MoveCameraAction(VideoService videoService )
         {
             this.videoService = videoService;
@@ -24,38 +26,37 @@ namespace LocalLib.Scripting.Actions
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
             
-            foreach (Actor item in midground.GetAllActors())
-            {
-                if (item.HasAttribute(AttributeKey.body) && item.HasAttribute(AttributeKey.TrackAble))
-                {
+            // foreach (Actor item in background.GetAllAc)
+            // {
+                Actor item = background.GetFirstActor("background");
+                
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
                     Point position = body.GetPosition();
                     Point size = body.GetSize();
 
-                    // camera->target = player->position;
-                    // camera->offset = (Vector2){ width/2.0f, height/2.0f };
-                    // float minX = 1000, minY = 1000, maxX = -1000, maxY = -1000;
+                    Point offset = new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/2, PROGRAM_SETTINGS.SCREEN_HEIGHT/2 );
 
-                    // for (int i = 0; i < envItemsLength; i++)
-                    // {
-                    //     EnvItem *ei = envItems + i;
-                    //     minX = fminf(ei->rect.x, minX);
-                    //     maxX = fmaxf(ei->rect.x + ei->rect.width, maxX);
-                    //     minY = fminf(ei->rect.y, minY);
-                    //     maxY = fmaxf(ei->rect.y + ei->rect.height, maxY);
-                    // }
+                        AttributeBody PlayerBody = (AttributeBody) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.body);
+                        Point PlayerPosition = PlayerBody.GetPosition();
+                        Point PlayerSize = PlayerBody.GetSize();
+         
+                    videoService.UpdateCameraPosition(PlayerPosition, size, offset);
+                
+            
+        }
 
-                    // Vector2 max = GetWorldToScreen2D((Vector2){ maxX, maxY }, *camera);
-                    // Vector2 min = GetWorldToScreen2D((Vector2){ minX, minY }, *camera);
+        
+        private  Types.Point GetWorldToScreen2D(Types.Rectangle body, Types.Point PosOffset)
+        {
+            Types.Point possition = body.GetPosition();
+            int x = possition.GetX() + (PROGRAM_SETTINGS.SCREEN_WIDTH/2 - PosOffset.GetX());
+            int y = possition.GetY() + (PROGRAM_SETTINGS.SCREEN_HEIGHT)/2 - PosOffset.GetY();
 
-                    // if (max.x < width) camera->offset.x = width - (max.x - width/2);
-                    // if (max.y < height) camera->offset.y = height - (max.y - height/2);
-                    // if (min.x > 0) camera->offset.x = width/2 - min.x;
-                    // if (min.y > 0) camera->offset.y = height/2 - min.y;
-                    
-                    videoService.UpdateCameraPosition(position, size);
-                }
-            }
+            // Types.Point size = rectangle.GetSize();
+            // int width = size.GetX();
+            // int height = size.GetY();
+
+            return new Point (x, y);
         }
     }
 }

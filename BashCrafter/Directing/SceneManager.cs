@@ -141,12 +141,15 @@ namespace BashCrafter.Directing
                 stage.midground.AddActor("player", player);
             }
 
-            for (int i = 0; i < 50; i++)
-            {
-                // System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
-            addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
-            addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
-            }
+            // for (int i = 0; i < 50; i++)
+            // {
+            //     // System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
+            // // addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
+            // // addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
+            // }
+            addTrees(stage.midground, 20);
+            addRocks(stage.midground, 50);
+
             
             for (int i = 0; i < 25; i++)
             {addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.MAP_X - PROGRAM_SETTINGS.CELL_SIZE), random.Next(PROGRAM_SETTINGS.MAP_Y - PROGRAM_SETTINGS.CELL_SIZE)),"enemy " + i);}
@@ -180,18 +183,7 @@ namespace BashCrafter.Directing
             stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
             stage.addActionToScript("drawBackground", new DrawActorsForground(VideoService));
             stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
-            stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
-
-            // stage.addActionToScript("control", new ControlActorAction(KeyboardService));
-            // stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
-            // stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
-            // stage.addActionToScript("move", new MoveActor(VideoService));
-            // stage.addActionToScript("camera", new MoveCameraAction(VideoService));
-            
-            // stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
-            // stage.addActionToScript("draw", new DrawActorTexture(VideoService));
-            // stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
-            // stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, "2"));
+            stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, "2"));
         }
 
 
@@ -206,70 +198,148 @@ namespace BashCrafter.Directing
             // AddRacket(cast);
             // AddPlayer(cast);
             // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
-            Actor player = stage.midground.GetFirstActor("player");
-stage.ClearCast();
+
+            // AddStats(cast);
+            // AddLevel(cast);
+            // AddScore(cast);
+            // AddLives(cast);
+            // AddBall(cast);
+            // AddBricks(cast);
+            // AddRacket(cast);
+            // AddPlayer(cast);
+            // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
+
+            Actor player = null;
+            
+            if (stage.midground.GetFirstActor("player") != null)
+            {
+                player = stage.midground.GetFirstActor("player");
+
+            }
+
+            stage.ClearCast();
 
             // background
-            Actor backdrop = new Actor("background");
-            backdrop.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
-            backdrop.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+            Actor background = new Actor("background");
+            background.AddAttribute(new AttributeBody(new Point(0,0), new Point(PROGRAM_SETTINGS.MAP_X,PROGRAM_SETTINGS.MAP_Y), 0));
+            background.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.GREEN));
 
-            // stage.background.AddActor("background", backdrop);
+            stage.background.AddActor("background", background);
 
             // midground
+            if (player == null)
+            {
+                addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
+            }else
+            {
+                stage.midground.AddActor("player", player);
+            }
+
+            // for (int i = 0; i < 50; i++)
+            // {
+            //     // System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
+            // // addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
+            // // addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
+            // }
+            addTrees(stage.midground, 20);
+            addRocks(stage.midground, 50);
+
             
-            // addcast.AddPlayer(stage.midground);
-            stage.midground.AddActor("player", player);
-
-            // addcast.Addrock(stage.midground);
-
-
-
-            
-
+           
+            addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
             // forground
+            // menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 
 
             // setup Actions
+            // stage.ClearActions();
+
+
             stage.ClearActions();
+            MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
 
             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
+            // stage.addActionToScript("COLISHION", mouseMenu);
+            // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
+
+            // stage.addActionToScript("menu", new TestClick(mouseMenu, new testClicker_attribute()));
             stage.addActionToScript("move", new MoveActor(VideoService));
             stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             
             stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
-            stage.addActionToScript("draw", new DrawActorsBackground(VideoService));
-            stage.addActionToScript("draw", new DrawActorTexture(VideoService));
+            stage.addActionToScript("drawforground", new DrawActorsBackground(VideoService));
+            stage.addActionToScript("drawMidground", new DrawActorTexture(VideoService));
             stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
-            stage.addActionToScript("draw", new DrawActorsForground(VideoService));
+            stage.addActionToScript("drawBackground", new DrawActorsForground(VideoService));
             stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
             stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
+//             // Actor player = stage.midground.GetFirstActor("player");
+// stage.ClearCast();
+
+//             // background
+//             Actor backdrop = new Actor("background");
+//             backdrop.AddAttribute(new AttributeBody(new Point(0,0), new Point(10000,10000), 0));
+//             backdrop.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.PURPLE));
+
+//             // stage.background.AddActor("background", backdrop);
+
+//             // midground
+            
+//             addcast.AddPlayer(stage.midground, new Point(0,0));
+//             // stage.midground.AddActor("player", player);
+
+//             addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
+//             // addcast.Addrock(stage.midground);
+
+
+
+//             addRocks(stage.midground, 50);
+            
+
+//             // forground
+
+
+//             // setup Actions
+//             stage.ClearActions();
+
+//             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
+//             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+//             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+//             stage.addActionToScript("move", new MoveActor(VideoService));
+//             stage.addActionToScript("camera", new MoveCameraAction(VideoService));
+            
+//             stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
+//             stage.addActionToScript("draw", new DrawActorsBackground(VideoService));
+//             stage.addActionToScript("draw", new DrawActorTexture(VideoService));
+//             stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
+//             stage.addActionToScript("draw", new DrawActorsForground(VideoService));
+//             stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
+//             stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
         }
 
-
-        private void PrepareInventory(Stage menu)
-        {
-            // addcast.AddBackground(menu.background, new Point(512,512), new Color(25,70,120));
-            
-            menu.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
-            
-            // menu.addActionToScript("camera", new MoveCameraAction(VideoService));
-
-            // menu.addActionToScript("startDrawing", new StartDrawing(VideoService));
-            menu.addActionToScript("draw", new DrawActorTexture(VideoService));
-            menu.addActionToScript("endDrawing", new EndDrawing(VideoService));
-            // menu.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
-
-            // menu.background.AddActor("background", );
-        }
         // -----------------------------------------------------------------------------------------
         // casting methods
         // -----------------------------------------------------------------------------------------
 
+        private void addTrees(Cast cast, int amount)
+        {
+             for (int i = 0; i < amount; i++)
+            {
+                addcast.AddTree(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Tree " + i);
+            }
+        }
 
 
+        private void addRocks(Cast cast, int amount)
+        {
+             for (int i = 0; i < amount; i++)
+            {
+               addcast.Addrock(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Rock " + i);
+            }
+        }
 
         private List<List<string>> LoadLevel(string filename)
         {

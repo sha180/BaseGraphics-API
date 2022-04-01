@@ -67,63 +67,19 @@ namespace BashCrafter.Directing
             
 
             sceneManager.PrepareScene(PROGRAM_SETTINGS.NEW_GAME, stageMain);
-            // SetupStages(inputService, videoService);
 
             while (videoService.IsWindowOpen())
             {
-                
-                
-
-                // stageMain.GetInputs(cast, script, "control");
-                // stageMain.GetInputs(cast, script, "COLISHION");
-                // stageMain.GetInputs(cast, script, "move");
-                // stageMain.GetInputs(cast, script, "camera");
-                // ExecuteActions(stageMain);
-                // ExecuteActions(stageMain);
-                // ExecuteActions(stageMain);
-                // ExecuteActions(stageMain);
-                // videoService.ClearBuffer(true);
-                
-                // stageMain.GetInputs(cast, script, "draw");
                 ExecuteActions(stageMain);
-
-                // ExecuteActions("control");
-                // ExecuteActions("move");
-                // ExecuteActions("draw");
-                // stagelist[stage].GetInputs();
-                // TMP = stagelist[stage].DoUpdates();
-                // List<Actor> actors = stagelist[stage].DoOutputs();
-
-                // videoService.DrawActors(actors);
-                // videoService.End2dMap();
-
-                // videoService.FlushBuffer();
-                // stage = TMP;
             }
+
             videoService.Release();
         }
 
         private void ExecuteActions(Stage stage)
         {
             stage.GetInputs(this);
-            // List<Scripting.Action> actions = script.GetActions(group);
-            // foreach(Scripting.Action action in actions)
-            // {
-            //     action.Execute(cast, script);
-            // }
         }
 
-        // private void SetupStages(InputService inputService, VideoService videoService 
-        //                                 )
-        // {
-        //     // GameStage gameStage = new GameStage(keyboardService, videoService);
-        //     // TitleStage titleStage = new TitleStage(keyboardService, videoService, menu);
-        //     // TitleStage welcomeStage = new TitleStage(inputService, videoService);
-        //     // GameStage gameStage = new GameStage(inputService, videoService);
-            
-        //     // stagelist.Add(Stages.TITLE, welcomeStage);
-        //     // stagelist.Add(Stages.GAME, gameStage);
-        //     // stagelist.Add(GAME, gameStage);
-        // }
     }
 }

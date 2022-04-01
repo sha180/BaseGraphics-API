@@ -92,7 +92,7 @@ namespace LocalLib.Services
         void End2dMap();
 
         
-        public void UpdateCameraPosition(Types.Point possition, Types.Point size);
+        public void UpdateCameraPosition(Types.Point possition, Types.Point size, Types.Point offset);
 
         public void DrawGrid();
     }
