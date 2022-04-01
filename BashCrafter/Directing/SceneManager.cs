@@ -185,7 +185,8 @@ namespace BashCrafter.Directing
             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
-            stage.addActionToScript("COLISHION", mouseMenu);
+            stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
+            // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
 
             // stage.addActionToScript("menu", new TestClick(mouseMenu, new testClicker_attribute()));

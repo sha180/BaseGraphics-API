@@ -55,22 +55,22 @@ private int framesCounter = 0;
                     Point velocity = new Point(0,0);
 
             // System.Console.WriteLine("up");
-                    if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.LEFT))
+                    if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.A))
                     {
                         velocity = velocity.Add(new Point(-1, 0));
             body.SetSpeed(200.0f);
                     }
-                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.RIGHT))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.D))
                     {
                         velocity = velocity.Add(new Point(1, 0));
             body.SetSpeed(200.0f);
                     }
-                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.UP))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.W))
                     {
                         velocity = velocity.Add(new Point(0, -1));
             body.SetSpeed(200.0f);
                     }
-                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.DOWN))
+                     if (keyboardService.IsKeyDown(PROGRAM_SETTINGS.S))
                     {
                         velocity = velocity.Add(new Point(0, 1));
             body.SetSpeed(200.0f);
