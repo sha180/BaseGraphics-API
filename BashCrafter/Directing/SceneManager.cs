@@ -157,26 +157,26 @@ namespace BashCrafter.Directing
             //spawn left
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy " + i);
+                addcast.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
             }
             //spawn top
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy2 " + i);
+                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy 2 " + i);
             }
             //spawn bottom
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, (PROGRAM_SETTINGS.rows-1)*PROGRAM_SETTINGS.CELL_SIZE),"enemy3 " + i);
+                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, (PROGRAM_SETTINGS.rows-1)*PROGRAM_SETTINGS.CELL_SIZE),"enemy 3 " + i);
             }
             //spawn right
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point((PROGRAM_SETTINGS.calloms-1)*PROGRAM_SETTINGS.CELL_SIZE, random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE),"enemy4 " + i);
+                addcast.AddEnemy(stage.midground, new Point((PROGRAM_SETTINGS.calloms-1)*PROGRAM_SETTINGS.CELL_SIZE, random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE),"enemy 4 " + i);
             }
             
 
-            addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
+            addcast.AddAirship(stage.midground,new Point(((PROGRAM_SETTINGS.calloms-1)/2)*PROGRAM_SETTINGS.CELL_SIZE,((PROGRAM_SETTINGS.rows-1)/2)*PROGRAM_SETTINGS.CELL_SIZE),"airship");
             // forground
             menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 

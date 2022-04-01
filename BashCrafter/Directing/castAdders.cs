@@ -108,5 +108,16 @@ namespace BashCrafter
 
             cast.AddActor("grass", grass); 
         }
+
+        public void AddWall(Cast cast, Point poisition, string ActorKey)
+        {
+           Actor wall = new Actor(ActorKey);
+            wall.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
+            wall.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
+            wall.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_WALL, new Point(5, 15)));
+            //enemy.AddAttribute(new AttributeAnimated(new Point(5, 15), 5));
+
+            cast.AddActor("wall", wall); 
+        }
     }
 }
