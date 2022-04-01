@@ -49,7 +49,7 @@ namespace LocalLib.Scripting.Actions
                     }else{
                         // AttributeTexture texture = (AttributeTexture)item.GetActorAttribute(AttributeKey.texture);
                         videoService.DrawRectangle(body.GetSize(), body.GetPosition(), ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor(), true);
-                    } 
+                    }
                     
                     if(item.HasAttribute(ItemAttributeKey.Stack))
                     {

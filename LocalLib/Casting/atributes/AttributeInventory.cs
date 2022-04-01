@@ -37,7 +37,6 @@ namespace LocalLib.Casting
                 {
                     Items[i] = new Actor("NULL");
                     Items[i].AddAttribute(new AttributeBody(new Point(0,0), new Point(48, 48), 0));
-                    Items[i].AddAttribute(new AttributeColor(new Color(0,0,100)));
                     Items[i].AddAttribute(new ItemStack());
                 }
                 
@@ -93,6 +92,21 @@ namespace LocalLib.Casting
                     if(actor.ActorKey.ToLower() == "null")
                     {
                         actor.ActorKey = itemKey;
+                        switch (itemKey)
+                        {
+                            case "wood":
+                                actor.AddAttribute(new AttributeColor(new Color(101,67,33)));
+                                actor.AddAttribute(new AttributeTexture(itemKey));
+                                break;
+                            
+                            case "stone":
+                                actor.AddAttribute(new AttributeColor(new Color(100,100,100)));
+                                actor.AddAttribute(new AttributeTexture(itemKey));
+                                break;
+                            default:
+                                break;
+
+                        }
                         ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
                         stack.StackSize += amount;
                         break;

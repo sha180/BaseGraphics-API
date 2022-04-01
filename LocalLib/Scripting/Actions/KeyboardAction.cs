@@ -39,32 +39,6 @@ namespace LocalLib.Scripting.Actions
                     AttributeClickable clickable =  new AttributeClickable();
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
-                    // AttributeBody PlayerBody = (AttributeBody) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.body);
-                    // Point PlayerPosition = PlayerBody.GetPosition();
-                    // Point PlayerSize = PlayerBody.GetSize();
-            
-                    // if(mouseService.IsMouseOverBox(body.GetRectangle(), PlayerPosition) && item.HasAttribute(AttributeKey.color))
-                    // {
-                    //     // System.Console.WriteLine("mouse over box");
-                    //     AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
-                    //     // color.SetColor(new Color(200,200,0));
-                    // }
-        
-            // foreach (Actor item in forground.GetAllActors())
-            // {
-                    // AttributeBody PlayerBody = (AttributeBody) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.body);
-                    // Point PlayerPosition = PlayerBody.GetPosition();
-                    // Point PlayerSize = PlayerBody.GetSize();
-                        
-                        // System.Console.WriteLine(mouseService.IsMouseOverBox(body.GetRectangle(), new Point(0,0)));
-                    // bool mouseOver = mouseOverObject[item.ActorKey];
-                        // System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
-                        // AttributeColor color = (AttributeColor) item.GetActorAttribute(AttributeKey.color);
-                        // Types.Color tmpColor = color.GetColor();
-                        
-                        // color.SetColor(new Color(200,200,0));
-                            // animated.currentFrame = 2;
-                        // System.Console.WriteLine($"mswitch = {clickable.getSwitch()}");
                             if(keyboardService.IsKeyPressed("e"))
                             {
                                 
