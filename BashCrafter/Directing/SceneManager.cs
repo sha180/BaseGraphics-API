@@ -144,6 +144,7 @@ namespace BashCrafter.Directing
             if (player == null)
             {
                 addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
+                
             }else
             {
                 stage.midground.AddActor("player", player);
@@ -153,16 +154,16 @@ namespace BashCrafter.Directing
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
             
-            //enemy spawn
+            
             //spawn left
-            for (int i = 0; i < 10; i++)
+             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
+                 addcast.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
             }
             //spawn top
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy 2 " + i);
+                 addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy 2 " + i);
             }
             //spawn bottom
             for (int i = 0; i < 10; i++)
@@ -189,9 +190,11 @@ namespace BashCrafter.Directing
             MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
 
             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
+            stage.addActionToScript("control", new enemybehavior());
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
             stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
+
             // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
 
@@ -265,6 +268,8 @@ namespace BashCrafter.Directing
             // }
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
+
+
 
             
            
