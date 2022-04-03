@@ -32,7 +32,6 @@ private int framesCounter = 0;
         Random random = new Random();
 
         framesCounter++;
-                    System.Console.WriteLine("framesCounter = " + framesCounter);
 
              if (!wait && framesCounter >= pireod)
              {

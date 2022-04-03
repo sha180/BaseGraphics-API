@@ -41,32 +41,30 @@ namespace BashCrafter.Actions
         if (player.HasAttribute(AttributeKey.clickable))
         {
             
-        AttributeClickable clickable = (AttributeClickable) player.GetActorAttribute(AttributeKey.clickable);
+        // AttributeClickable clickable = (AttributeClickable) player.GetActorAttribute(AttributeKey.clickable);
                                     
 
             if(mouseService.IsButtonPressed("right")){
-                clickable.clickState = true;
-                clickable.toggalSwitch();
-                if(clickable.getPREVEUS_State_2())
-                {
+                // if(clickable.getPREVEUS_State_2())
+                // {
 
                 Point mousepos = GetWorldToScreen2D( PlayerPosition, mouseService.GetCoordinates());
                            
                     string slot = inventoryPlayer.getSelectedItem();
                     
-                            System.Console.WriteLine("mousepos x = " + mouseService.GetCoordinates().x);
-                            System.Console.WriteLine("mousepos y = " + mouseService.GetCoordinates().y);
-                            System.Console.WriteLine("pos x = " + mousepos.x);
-                            System.Console.WriteLine("pos y = " + mousepos.y);
-                            System.Console.WriteLine("PlayerPosition x = " + PlayerPosition.x);
-                            System.Console.WriteLine("PlayerPosition y = " + PlayerPosition.y);
-                            System.Console.WriteLine("slot" +  slot);
+                            // System.Console.WriteLine("mousepos x = " + mouseService.GetCoordinates().x);
+                            // System.Console.WriteLine("mousepos y = " + mouseService.GetCoordinates().y);
+                            // System.Console.WriteLine("pos x = " + mousepos.x);
+                            // System.Console.WriteLine("pos y = " + mousepos.y);
+                            // System.Console.WriteLine("PlayerPosition x = " + PlayerPosition.x);
+                            // System.Console.WriteLine("PlayerPosition y = " + PlayerPosition.y);
+                            // System.Console.WriteLine("slot" +  slot);
                         switch (slot)
                         {
                             case "wood":
                                 System.Console.WriteLine("spikes");
                                 // castAdder.AddSpicks(midground, mousepos, "spikes");
-                castAdder.AddSpicks(midground, mousepos, "spike");
+                                castAdder.AddSpicks(midground, mousepos, "spike");
                                 break;
                             case "stone":
                                 castAdder.AddWall(midground,  mousepos, "walls");
@@ -76,7 +74,7 @@ namespace BashCrafter.Actions
                         }
 
                         inventoryPlayer.removeSeleced();
-                    }
+                    // }
                 }
             }
         }

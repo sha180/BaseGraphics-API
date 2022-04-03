@@ -17,7 +17,7 @@ namespace BashCrafter
             Actor tree = new Actor(ActorKey);
             tree.AddAttribute(new AttributeBody(position, new Point(PROGRAM_SETTINGS.TREE_LENGTH, PROGRAM_SETTINGS.TREE_HEIGHT), 0));
             tree.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            tree.AddAttribute(new AttributeHealth(3));
+            tree.AddAttribute(new AttributeHealth(5));
             tree.AddAttribute(new AttributeClickable());
             tree.AddAttribute(new AttributeInventory(invSize, items));
             tree.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_TREE, new Point(138, 155)));
@@ -37,7 +37,7 @@ namespace BashCrafter
             Actor rock = new Actor(ActorKey);
             rock.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
             rock.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            rock.AddAttribute(new AttributeHealth(5));
+            rock.AddAttribute(new AttributeHealth(10));
             rock.AddAttribute(new AttributeClickable());
             rock.AddAttribute(new AttributeInventory(invSize, items));
             rock.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ROCK, new Point(128, 135)));
@@ -51,8 +51,8 @@ namespace BashCrafter
             ItemAdder item = new ItemAdder();
             int invSize = 8;
             Actor[] items = new Actor[invSize];
-            items[1] = item.AddStone();
-            items[0] = item.AddWood();
+            items[1] = item.AddStone(1000);
+            items[0] = item.AddWood(1000);
 
             Actor actor = new Actor("player");
             actor.AddAttribute(new AttributeBody(position, new Point(64, 64), 120));
