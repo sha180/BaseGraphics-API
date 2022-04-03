@@ -24,7 +24,7 @@ namespace LocalLib.Scripting.Actions
         /// <param name="script">The script of actions.</param>
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
-            videoService.ClearBuffer(true);
+            videoService.ClearBuffer();
         }
     }
 }

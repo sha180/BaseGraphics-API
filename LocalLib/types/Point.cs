@@ -79,10 +79,10 @@ namespace LocalLib.Types
         /// </summary>
         /// <param name="factor">The scaling factor.</param>
         /// <returns>A scaled instance of Point.</returns>
-        public Point Scale(int factor)
+        public Point Scale(float factor)
         {
-            int x = this.x * factor;
-            int y = this.y * factor;
+            int x = (int) (this.x * factor);
+            int y = (int) (this.y * factor);
             return new Point(x, y);
         }
         

@@ -28,6 +28,11 @@ namespace LocalLib.Scripting.Actions
             
             // foreach (Actor item in background.GetAllAc)
             // {
+                Actor player = midground.GetFirstActor("player");
+                if ( player != null)
+                {
+
+                
                 Actor item = background.GetFirstActor("background");
                 
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
@@ -36,13 +41,21 @@ namespace LocalLib.Scripting.Actions
 
                     Point offset = new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/2, PROGRAM_SETTINGS.SCREEN_HEIGHT/2 );
 
-                        AttributeBody PlayerBody = (AttributeBody) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.body);
+                        AttributeBody PlayerBody = (AttributeBody) player.GetActorAttribute(AttributeKey.body);
                         Point PlayerPosition = PlayerBody.GetPosition();
+                        
+                        // PlayerPosition.Scale(0);
+
                         Point PlayerSize = PlayerBody.GetSize();
          
+                    videoService.SetCameraTracking(true);
                     videoService.UpdateCameraPosition(PlayerPosition, size, offset);
                 
-            
+                }
+                else
+                {
+                    videoService.SetCameraTracking(false);
+                }
         }
 
         

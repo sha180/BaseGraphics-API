@@ -44,14 +44,15 @@ namespace LocalLib.Scripting.Actions
                                 
                                     clickable.clickState = true;
                                     clickable.toggalSwitch();
-                        System.Console.WriteLine($"Ekey  = {clickable.getSwitch()}");
+                        System.Console.WriteLine($"Ekey  = {clickable.getPREVEUS_State_2()}");
                                 if (clickable.getSwitch()){
                                     menucallback.OnNext(forground, midground.GetFirstActor("player"));
-                                }else if(clickable.getPREVEUS_State())
-                                {
-                                    
-                                    menucallback.removeOnNext(forground);
                                 }
+                                // else if(!clickable.getPREVEUS_State_2())
+                                // {
+                                    
+                                //     menucallback.removeOnNext(forground);
+                                // }
                             }
 
                             if(keyboardService.IsKeyPressed("escape"))

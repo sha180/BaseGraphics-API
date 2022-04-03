@@ -13,8 +13,10 @@ namespace LocalLib.Casting
         private string attributeKey = AttributeKey.Inventory;
         
         // List<Item> items = null;
-        Actor[] Items;
-        private int size;
+        public Actor[] Items;
+        public int size;
+
+        public int selectedSlot;
 
         // private Point position;
         // private Point size;
@@ -26,6 +28,7 @@ namespace LocalLib.Casting
         public AttributeInventory(int size, Actor[] items = null)
         {
             this.size = size;
+            selectedSlot = 0;
 
             if (items != null)
             {
@@ -43,7 +46,7 @@ namespace LocalLib.Casting
             }
         }
 
-        public string GetAttributeKey()
+        public virtual string GetAttributeKey()
         {
             return attributeKey;
         }
@@ -52,7 +55,7 @@ namespace LocalLib.Casting
         // /// Gets the position. 
         // /// </summary>
         // /// <returns>The position.</returns>
-        public Actor[] GetItems()
+        public virtual Actor[] GetItems()
         {
             return Items;
         }
@@ -61,12 +64,12 @@ namespace LocalLib.Casting
         // /// Gets a rectangle enclosing this body.
         // /// </summary>
         // /// <returns>The enclosing rectangle.</returns>
-        public int GetSize()
+        public virtual int GetSize()
         {
             return size;
         }
 
-        public void addItem(string itemKey, int amount = 1)
+        public virtual void addItem(string itemKey, int amount = 1)
         {
             bool hasItem = false;
             foreach (Actor actor in Items)
@@ -96,12 +99,15 @@ namespace LocalLib.Casting
                         {
                             case "wood":
                                 actor.AddAttribute(new AttributeColor(new Color(101,67,33)));
-                                actor.AddAttribute(new AttributeTexture(itemKey));
+                                // actor.AddAttribute(new AttributeTexture(itemKey));
+                                // actor.AddAttribute(new AttributeAnimated(new Point(24,24), 1));
+                                // AttributeAnimated animated = (AttributeAnimated) actor.GetActorAttribute(AttributeKey.animated);
+                                // animated.TextureBounds.position = new Point(1,7).Scale(24);
                                 break;
                             
                             case "stone":
                                 actor.AddAttribute(new AttributeColor(new Color(100,100,100)));
-                                actor.AddAttribute(new AttributeTexture(itemKey));
+                                // actor.AddAttribute(new AttributeTexture(itemKey));
                                 break;
                             default:
                                 break;
@@ -115,49 +121,49 @@ namespace LocalLib.Casting
             }
             
         }
-        // /// <summary>
-        // /// Gets the size.
-        // /// </summary>
-        // /// <returns>The size.</returns>
-        // public Point GetSize()
-        // {
-        //     return size;
-        // }
 
-        // /// <summary>
-        // /// Gets the velocity.
-        // /// </summary>
-        // /// <returns>The velocity.</returns>
-        // public Point GetVelocity()
-        // {
-        //     return velocity;
-        // }
 
-        // /// <summary>
-        // /// Sets the position to the given value.
-        // /// </summary>
-        // /// <param name="position">The given position.</param>
-        // public void SetPosition(Point position)
-        // {
-        //     this.position = position;
-        // }
+        
+        public virtual void removeItem(string itemKey, int amount = 1)
+        {
+            foreach (Actor actor in Items)
+            {
+                // System.Console.WriteLine($"actor key is null =  { actor == null}");
+                if(actor != null)
+                {
+                    if(actor.ActorKey == itemKey)
+                    {
+                        ItemStack stack = (ItemStack) actor.GetActorAttribute(ItemAttributeKey.Stack);
+                        if (stack.StackSize > 0)
+                        {
+                        stack.StackSize -= amount;
+                        }
 
-        // /// <summary>
-        // /// Sets the size to the given value.
-        // /// </summary>
-        // /// <param name="size">The given size.</param>
-        // public void SetSize(Point size)
-        // {
-        //     this.size = size;
-        // }
+                        break;
+                    }
+                }
+            }
+        }
+        public virtual void removeSeleced(int amount = 1)
+        {
+            if(Items[selectedSlot] != null)
+            {
+                ItemStack stack = (ItemStack) Items[selectedSlot].GetActorAttribute(ItemAttributeKey.Stack);
+                if (stack.StackSize > 0)
+                {
+                    stack.StackSize -= amount;
 
-        // /// <summary>
-        // /// Sets the velocity to the given value.
-        // /// </summary>
-        // /// <param name="velocity">The given velocity.</param>
-        // public void SetVelocity(Point velocity)
-        // {
-        //     this.velocity = velocity;
-        // }
+                }else
+                {
+                    Items[selectedSlot].ActorKey = "null";
+                    stack.StackSize = 0;
+                }
+            }
+        }
+        public virtual string getSelectedItem()
+        {
+            return Items[selectedSlot] != null ? Items[selectedSlot].ActorKey : "null";
+        }
+        
     }
 }

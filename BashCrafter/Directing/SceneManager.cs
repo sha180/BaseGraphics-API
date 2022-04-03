@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using BashCrafter.clickActions;
+using BashCrafter.Actions;
 
 using LocalLib.Casting;
 using LocalLib.Scripting;
@@ -26,8 +27,6 @@ namespace BashCrafter.Directing
 
         public static MouseService MouseService = new RaylibMouseService();
         public static PhysicsService PhysicsService = new RaylibPhysicsService();
-
-        public static castAdder addcast = new castAdder();
         public static MenuBuilder menuBuilder = new MenuBuilder();
 
         public List<Texture> TexturesList = new List<Texture>();
@@ -59,6 +58,8 @@ namespace BashCrafter.Directing
             LocalLib.Types.Texture enemy = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_ENEMY);
             LocalLib.Types.Texture airship = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_AIRSHIP);
             LocalLib.Types.Texture grass = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_GRASS);
+            LocalLib.Types.Texture spikes = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_SPIKES);
+            LocalLib.Types.Texture walls = new LocalLib.Types.Texture(TextureRegistry.TEXTURE_PATH_WALL);
             
 
 
@@ -74,19 +75,22 @@ namespace BashCrafter.Directing
             TexturesList.Add(enemy);
             TexturesList.Add(airship);
             TexturesList.Add(grass);
+            TexturesList.Add(spikes);
+            TexturesList.Add(walls);
         }
 
         public void PrepareScene(string scene, Stage stage)
         {
 
+            // TestWorld(stage);
             if (scene == PROGRAM_SETTINGS.NEW_GAME)
             {
                 PrepareNewGame(stage);
             }
-            else if (scene == "2")
-            {
-                PrepareNextGame(stage);
-            }
+            // else if (scene == "2")
+            // {
+            //     PrepareNextGame(stage);
+            // }
 
             // else if (scene == PROGRAM_SETTINGS.NEXT_LEVEL)
             // {
@@ -105,8 +109,7 @@ namespace BashCrafter.Directing
             //     PrepareGameOver(cast, script);
             // }
         }
-
-        private async void PrepareNewGame(Stage stage)
+        private void PrepareNewGame(Stage stage)
         {
             // AddStats(cast);
             // AddLevel(cast);
@@ -137,13 +140,13 @@ namespace BashCrafter.Directing
             
             for (int i = 0; i< 300;i++)
             {
-            addcast.AddGrass(stage.background, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"grass " + i);
+            castAdder.AddGrass(stage.background, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"grass " + i);
             }
 
             // midground
             if (player == null)
             {
-                addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
+                castAdder.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
             }else
             {
                 stage.midground.AddActor("player", player);
@@ -152,33 +155,34 @@ namespace BashCrafter.Directing
             
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
-            
+
+
             //enemy spawn
             //spawn left
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
+                castAdder.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
             }
             //spawn top
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy 2 " + i);
+                castAdder.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, 0),"enemy 2 " + i);
             }
             //spawn bottom
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, (PROGRAM_SETTINGS.rows-1)*PROGRAM_SETTINGS.CELL_SIZE),"enemy 3 " + i);
+                castAdder.AddEnemy(stage.midground, new Point(random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE, (PROGRAM_SETTINGS.rows-1)*PROGRAM_SETTINGS.CELL_SIZE),"enemy 3 " + i);
             }
             //spawn right
             for (int i = 0; i < 10; i++)
             {
-                addcast.AddEnemy(stage.midground, new Point((PROGRAM_SETTINGS.calloms-1)*PROGRAM_SETTINGS.CELL_SIZE, random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE),"enemy 4 " + i);
+                castAdder.AddEnemy(stage.midground, new Point((PROGRAM_SETTINGS.calloms-1)*PROGRAM_SETTINGS.CELL_SIZE, random.Next(PROGRAM_SETTINGS.calloms)* PROGRAM_SETTINGS.CELL_SIZE),"enemy 4 " + i);
             }
             
 
-            addcast.AddAirship(stage.midground,new Point(((PROGRAM_SETTINGS.calloms-1)/2)*PROGRAM_SETTINGS.CELL_SIZE,((PROGRAM_SETTINGS.rows-1)/2)*PROGRAM_SETTINGS.CELL_SIZE),"airship");
+            castAdder.AddAirship(stage.midground,new Point(((PROGRAM_SETTINGS.calloms-1)/2)*PROGRAM_SETTINGS.CELL_SIZE,((PROGRAM_SETTINGS.rows-1)/2)*PROGRAM_SETTINGS.CELL_SIZE),"airship");
             // forground
-            menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
+            // menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 
 
             // setup Actions
@@ -190,7 +194,9 @@ namespace BashCrafter.Directing
 
             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
-            stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            // stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            stage.addActionToScript("COLISHION", new addBlockAction(MouseService));
+            stage.addActionToScript("COLISHION", new removeBlockAction(MouseService));
             stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
             // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
@@ -251,7 +257,7 @@ namespace BashCrafter.Directing
             // midground
             if (player == null)
             {
-                addcast.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
+                castAdder.AddPlayer(stage.midground, new Point(PROGRAM_SETTINGS.MAP_X/2,(PROGRAM_SETTINGS.MAP_Y/2)+256));
             }else
             {
                 stage.midground.AddActor("player", player);
@@ -260,15 +266,15 @@ namespace BashCrafter.Directing
             // for (int i = 0; i < 50; i++)
             // {
             //     // System.Console.WriteLine("sdf " + (PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE));
-            // // addcast.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
-            // // addcast.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
+            // // castAdder.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
+            // // castAdder.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
             // }
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
 
             
            
-            addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
+            castAdder.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
             // forground
             // menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 
@@ -310,11 +316,11 @@ namespace BashCrafter.Directing
 
 //             // midground
             
-//             addcast.AddPlayer(stage.midground, new Point(0,0));
+//             castAdder.AddPlayer(stage.midground, new Point(0,0));
 //             // stage.midground.AddActor("player", player);
 
-//             addcast.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
-//             // addcast.Addrock(stage.midground);
+//             castAdder.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
+//             // castAdder.Addrock(stage.midground);
 
 
 
@@ -350,7 +356,7 @@ namespace BashCrafter.Directing
         {
              for (int i = 0; i < amount; i++)
             {
-                addcast.AddTree(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Tree " + i);
+                castAdder.AddTree(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Tree " + i);
             }
         }
 
@@ -359,7 +365,7 @@ namespace BashCrafter.Directing
         {
              for (int i = 0; i < amount; i++)
             {
-               addcast.Addrock(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Rock " + i);
+               castAdder.Addrock(cast, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE), "Rock " + i);
             }
         }
 

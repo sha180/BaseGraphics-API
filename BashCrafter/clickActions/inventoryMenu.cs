@@ -34,7 +34,7 @@ namespace BashCrafter.clickActions
                                 new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/4 * 3,
                                             PROGRAM_SETTINGS.SCREEN_HEIGHT/4 * 3));
                 
-                cast.AddActor("back",background);
+                cast.AddActor("back", background);
                     Actor[] items = inventory.GetItems();
                 for (int i = 0; i < inventory.GetSize(); i++)
                 {
