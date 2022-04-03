@@ -10,29 +10,56 @@ namespace LocalLib.Scripting.Actions
 {
     public class enemybehavior: Action
     {
+        
+        bool one = true;
+private int framesCounter = 0;
+    private int currentFrame = 0;
+    private int framesSpeed = 4;
+    private bool wait = false;
+    private int pireod = PROGRAM_SETTINGS.FRAME_RATE * 300 ;
         public enemybehavior()
         {}
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
-            
-            foreach (Actor item in midground.GetAllActors())
+
+            if(midground.GetFirstActor("airship") != null)
             {
-                string array = "";
-                foreach (char CHAR in item.ActorKey)
-                {
+
+            
+                    AttributeBody airship = ((AttributeBody) midground.GetFirstActor("airship").GetActorAttribute(AttributeKey.body));
+                    Point Airship = airship.GetPosition().Add(airship.GetSize().Scale(.25f));
                     
-                    if( CHAR == ' ')
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        array += CHAR;
-                    }
-                }
+        Random random = new Random();
+
+        framesCounter++;
+                    System.Console.WriteLine("framesCounter = " + framesCounter);
+
+             if (!wait && framesCounter >= pireod)
+             {
+                wait = true;
+             }  else     
+                if (wait && framesCounter >= (PROGRAM_SETTINGS.FRAME_RATE))
+            {
+                framesCounter = 0;
+
+            foreach (Actor item in midground.GetActors("enemy"))
+            {
+                // string array = "";
+                // foreach (char CHAR in item.ActorKey)
+                // {
+                    
+                //     if( CHAR == ' ')
+                //     {
+                //         break;
+                //     }
+                //     else
+                //     {
+                //         array += CHAR;
+                //     }
+                // }
                 
                 
-                if (array ==  "enemy" && item.HasAttribute(AttributeKey.body))
+                if (item.HasAttribute(AttributeKey.body) && one)
                 {
 
 
@@ -40,28 +67,46 @@ namespace LocalLib.Scripting.Actions
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
                     Point position = body.GetPosition();
                     Point velocity = body.GetVelocity();
-                    
-                    Point Airship = new Point((((PROGRAM_SETTINGS.calloms-1)/2)*PROGRAM_SETTINGS.CELL_SIZE)+128,(((PROGRAM_SETTINGS.rows-1)/2)*PROGRAM_SETTINGS.CELL_SIZE)+128);
-                    
-        
-                    int xspeed = (int) System.Math.Round((float) (Airship.GetX() - position.GetX()) /PROGRAM_SETTINGS.CELL_SIZE);
-                    int yspeed = (int) System.Math.Round((float) (Airship.GetY() - position.GetY()) /PROGRAM_SETTINGS.CELL_SIZE);
+                    int xspeed = (int) ((float) ((Airship.GetX()/PROGRAM_SETTINGS.CELL_SIZE) - (position.GetX()/PROGRAM_SETTINGS.CELL_SIZE))) * random.Next(-5, 10);
+                    int yspeed = (int) ((float) ((Airship.GetY()/PROGRAM_SETTINGS.CELL_SIZE) - (position.GetY()/PROGRAM_SETTINGS.CELL_SIZE))) * random.Next(-5, 10);
                     
 
                     // int slope = yspeed/(xspeed == 0 ? 1 : xspeed);
                     // int slope2 = xspeed/yspeed;
-                    // System.Console.WriteLine("slope = " + yspeed);
+                    // System.Console.WriteLine("xspeed = " + xspeed);
+                    // System.Console.WriteLine("yspeed = " + yspeed);
 
                     // body.SetVelocity(new Point(xspeed,yspeed));
                     body.SetVelocity(new Point(xspeed, yspeed));
-                    body.SetSpeed(5.0f);
+                        body.SetSpeed(1.0f);
 
+                    // if(xspeed < 10 && yspeed < 10)
+                    // {
+                    //     body.SetSpeed(3.0f);
+                    // }else
+                    // {
+                    //     body.SetSpeed(1.0f);
+
+                    // }
 
 
 
                 }
-                
             }
+            }
+            }else
+            {
+                foreach (Actor item in midground.GetActors("enemy"))
+                {
+                    if (item.HasAttribute(AttributeKey.body) && one)
+                    {
+                        // System.Console.WriteLine("enemyMove");
+                        AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
+                        body.SetVelocity(new Point(0, 0));
+                    }
+                }
+            }
+            
         }
     }
 }
