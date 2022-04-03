@@ -155,11 +155,10 @@ namespace BashCrafter.Directing
             
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
-
-
-            //enemy spawn
+            
+            
             //spawn left
-            for (int i = 0; i < 10; i++)
+             for (int i = 0; i < 10; i++)
             {
                 castAdder.AddEnemy(stage.midground, new Point(0, random.Next(PROGRAM_SETTINGS.rows) * PROGRAM_SETTINGS.CELL_SIZE),"enemy 1 " + i);
             }
@@ -193,11 +192,13 @@ namespace BashCrafter.Directing
             MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
 
             stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
+            stage.addActionToScript("control", new enemybehavior());
             stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
             // stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
             stage.addActionToScript("COLISHION", new addBlockAction(MouseService));
             stage.addActionToScript("COLISHION", new removeBlockAction(MouseService));
             stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
+
             // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
 
@@ -271,6 +272,8 @@ namespace BashCrafter.Directing
             // }
             addTrees(stage.midground, 20);
             addRocks(stage.midground, 50);
+
+
 
             
            
