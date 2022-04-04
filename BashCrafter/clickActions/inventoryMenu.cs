@@ -35,6 +35,12 @@ namespace BashCrafter.clickActions
                                             PROGRAM_SETTINGS.SCREEN_HEIGHT/4 * 3));
                 
                 cast.AddActor("back", background);
+
+                Actor airship = midground.GetFirstActor("airship");
+                AttributeHealth health = (AttributeHealth)airship.GetAttribute(AttributeKey.health);
+                
+
+
                     Actor[] items = inventory.GetItems();
                 for (int i = 0; i < inventory.GetSize(); i++)
                 {

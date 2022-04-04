@@ -64,7 +64,7 @@ namespace BashCrafter.Actions
                             case "wood":
                                 System.Console.WriteLine("spikes");
                                 // castAdder.AddSpicks(midground, mousepos, "spikes");
-                                castAdder.AddSpicks(midground, mousepos, "spike");
+                                castAdder.AddSpikes(midground, mousepos, "spike");
                                 break;
                             case "stone":
                                 castAdder.AddWall(midground,  mousepos, "walls");

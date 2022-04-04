@@ -57,7 +57,7 @@ namespace BashCrafter
             Actor actor = new Actor("player");
             actor.AddAttribute(new AttributeBody(position, new Point(64, 64), 120));
             actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            actor.AddAttribute(new AttributeGameInventory(invSize, items));
+            actor.AddAttribute(new AttributeGameInventory(invSize));
             actor.AddAttribute(new AttributeClickable());
             actor.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_Battler, new Point(64,64)));
             actor.AddAttribute(new AttributeAnimated(new Point(64,64), 9));
@@ -125,7 +125,7 @@ namespace BashCrafter
             cast.AddActor("wall", wall); 
         }
         
-        public static void AddSpicks(Cast cast, Point poisition, string ActorKey)
+        public static void AddSpikes(Cast cast, Point poisition, string ActorKey)
         {
            Actor spike = new Actor(ActorKey);
             spike.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
@@ -136,5 +136,6 @@ namespace BashCrafter
 
             cast.AddActor("spike", spike); 
         }
+        
     }
 }

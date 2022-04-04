@@ -16,7 +16,7 @@ private int framesCounter = 0;
     private int currentFrame = 0;
     private int framesSpeed = 4;
     private bool wait = false;
-    private int pireod = PROGRAM_SETTINGS.FRAME_RATE * 1 ;
+    private int pireod = PROGRAM_SETTINGS.FRAME_RATE * 100 ;
         public enemybehavior()
         {}
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
