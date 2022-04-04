@@ -199,7 +199,7 @@ namespace BashCrafter.Directing
             stage.addActionToScript("COLISHION", new removeBlockAction(MouseService));
             stage.addActionToScript("COLISHION", new addBlockAction(MouseService));
             stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
-
+            stage.addActionToScript("COLISHION", new itemSelectorAction(MouseService));
             // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
 

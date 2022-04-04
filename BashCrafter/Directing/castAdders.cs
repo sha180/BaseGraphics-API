@@ -57,7 +57,7 @@ namespace BashCrafter
             Actor actor = new Actor("player");
             actor.AddAttribute(new AttributeBody(position, new Point(64, 64), 120));
             actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            actor.AddAttribute(new AttributeGameInventory(invSize, items));
+            actor.AddAttribute(new AttributeGameInventory(invSize));
             actor.AddAttribute(new AttributeClickable());
             actor.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_Battler, new Point(64,64)));
             actor.AddAttribute(new AttributeAnimated(new Point(64,64), 9));
