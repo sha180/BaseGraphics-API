@@ -22,6 +22,8 @@ namespace LocalLib.Scripting
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
             Actor player = midground.GetFirstActor("player");
+            if (player != null)
+            {
             AttributeBody playBody = (AttributeBody)player.GetActorAttribute(AttributeKey.body);
             Point playerPos = playBody.GetPosition();
             int playerY = playerPos.GetY();
@@ -69,6 +71,7 @@ namespace LocalLib.Scripting
                         Console.WriteLine($"player collided {midground.GetAllActors().IndexOf(item)}");
                     }
                 }
+            }
             }
         }
     }

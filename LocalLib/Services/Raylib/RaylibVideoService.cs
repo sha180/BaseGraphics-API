@@ -14,7 +14,7 @@ namespace LocalLib.Services
         private string title;
         private int width;
         private bool debug = false;
-
+        private bool CameraTracking = true;
         Camera2D camera;
         private Dictionary<string, Raylib_cs.Font> fonts
             = new Dictionary<string, Raylib_cs.Font>();
@@ -42,7 +42,7 @@ namespace LocalLib.Services
         }
 
         /// </inheritdoc>
-        public void ClearBuffer(bool CameraTracking)
+        public void ClearBuffer()
         {
             Raylib_cs.Color background = ToRaylibColor(color);
             Raylib.BeginDrawing();
@@ -272,6 +272,10 @@ namespace LocalLib.Services
                 Raylib.DrawLine(0, y, PROGRAM_SETTINGS.MAP_X, y, Raylib_cs.Color.GRAY);
             }
             }
+        }
+        public void SetCameraTracking(bool enable)
+        {
+            CameraTracking = enable;
         }
     }
 }

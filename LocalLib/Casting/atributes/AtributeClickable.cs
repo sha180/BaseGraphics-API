@@ -14,6 +14,8 @@ namespace LocalLib.Casting
         // private Point position;
         // private Point size;
         // private Point velocity;
+
+        public int clicks = 0;
         public bool clickState;
         private bool toggal;
         private bool PREVEUS_State;

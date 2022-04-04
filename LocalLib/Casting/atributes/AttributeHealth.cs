@@ -13,6 +13,8 @@ namespace LocalLib.Casting
         private string attributeKey = AttributeKey.health;
         
         private int health;
+        private int MaxHealth;
+
 
         // private Point position;
         // private Point size;
@@ -24,6 +26,7 @@ namespace LocalLib.Casting
         public AttributeHealth(int health)
         {
             this.health = health;
+            this.MaxHealth = health;
         }
 
         public string GetAttributeKey()
@@ -33,6 +36,10 @@ namespace LocalLib.Casting
         public int getHealth()
         {
             return health;
+        }
+        public int getMaxHealth()
+        {
+            return MaxHealth;
         }
         public void damage()
         {

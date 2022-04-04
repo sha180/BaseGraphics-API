@@ -13,7 +13,7 @@ namespace LocalLib.Services
         /// <summary>
         /// Prepares the buffer for drawing.
         /// </summary>
-        void ClearBuffer(bool CameraTracking);
+        void ClearBuffer();
 
         float GetDeltaTime();
 
@@ -36,7 +36,7 @@ namespace LocalLib.Services
         /// <param name="position">The given position.</param>
         /// <param name="color">The given color.</param>
         /// <param name="filled">Whether or not the rectangle should be filled.</param>
-        void DrawRectangle(Point size, Point position, Color color, bool filled);
+        void DrawRectangle(Point size, Point position, Color color, bool filled = false);
 
         /// <summary>
         /// Draws the given text at the given position.
@@ -95,6 +95,7 @@ namespace LocalLib.Services
         public void UpdateCameraPosition(Types.Point possition, Types.Point size, Types.Point offset);
 
         public void DrawGrid();
+        void SetCameraTracking(bool enable);
     }
 
 }

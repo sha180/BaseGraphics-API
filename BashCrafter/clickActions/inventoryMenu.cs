@@ -26,7 +26,7 @@ namespace BashCrafter.clickActions
         {
             if(actor.HasAttribute(AttributeKey.Inventory))
             {
-
+// MenuBuilder.AddHotbar(cast, actor);
                 AttributeInventory inventory = (AttributeInventory) actor.GetActorAttribute(AttributeKey.Inventory);
                 ((AttributeBody)background.GetActorAttribute(AttributeKey.body)).SetSize(
                                 // new Point(( inventory.GetSize()/9 > 1 ? (PROGRAM_SETTINGS.GRID_X + 4) * 9 : inventory.GetSize() * (PROGRAM_SETTINGS.GRID_X + 4) ) ,
@@ -34,7 +34,7 @@ namespace BashCrafter.clickActions
                                 new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/4 * 3,
                                             PROGRAM_SETTINGS.SCREEN_HEIGHT/4 * 3));
                 
-                cast.AddActor("back",background);
+                cast.AddActor("back", background);
                     Actor[] items = inventory.GetItems();
                 for (int i = 0; i < inventory.GetSize(); i++)
                 {
@@ -59,6 +59,7 @@ namespace BashCrafter.clickActions
                     {
                         System.Console.WriteLine($"its not null");
                         ((AttributeBody)items[i].GetActorAttribute(AttributeKey.body)).SetPosition(new Point(PROGRAM_SETTINGS.SCREEN_WIDTH/8 + 10, (i * 64) + PROGRAM_SETTINGS.SCREEN_HEIGHT/8 + 10));
+                        items[i].AddAttribute(new AttributeClickable());
                        cast.AddActor("itemSlot", items[i]);
                     }
                 }
