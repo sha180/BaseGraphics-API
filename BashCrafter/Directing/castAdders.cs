@@ -57,7 +57,7 @@ namespace BashCrafter
             Actor actor = new Actor("player");
             actor.AddAttribute(new AttributeBody(position, new Point(64, 64), 120));
             actor.AddAttribute(new AttributeColor(new Color(255,255,255)));
-            actor.AddAttribute(new AttributeGameInventory(invSize));
+            actor.AddAttribute(new AttributeGameInventory(invSize, items));
             actor.AddAttribute(new AttributeClickable());
             actor.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_Battler, new Point(64,64)));
             actor.AddAttribute(new AttributeAnimated(new Point(64,64), 9));
@@ -77,7 +77,7 @@ namespace BashCrafter
             Actor enemy = new Actor(ActorKey);
             enemy.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
             enemy.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            enemy.AddAttribute(new AttributeHealth(15));
+            enemy.AddAttribute(new AttributeHealth(5));
             //enemy.AddAttribute(new AttributeClickable());
             //enemy.AddAttribute(new AttributeInventory(invSize, items));
             enemy.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ENEMY, new Point(64, 64)));
@@ -119,7 +119,7 @@ namespace BashCrafter
             wall.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
             wall.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
             wall.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_WALL));
-            wall.AddAttribute(new AttributeAnimated(new Point(64, 64), 1));
+            wall.AddAttribute(new AttributeAnimated(new Point(64, 45), 1));
             wall.AddAttribute(new AttributeHealth(5));
 
             cast.AddActor("wall", wall); 
