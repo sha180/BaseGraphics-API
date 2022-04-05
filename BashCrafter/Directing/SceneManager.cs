@@ -87,10 +87,10 @@ namespace BashCrafter.Directing
             {
                 PrepareNewGame(stage);
             }
-            // else if (scene == "2")
-            // {
-            //     PrepareNextGame(stage);
-            // }
+            else if (scene == "2")
+            {
+                PrepareNextGame(stage);
+            }
 
             // else if (scene == PROGRAM_SETTINGS.NEXT_LEVEL)
             // {
@@ -219,25 +219,7 @@ namespace BashCrafter.Directing
 
         private void PrepareNextGame(Stage stage)
         {
-            // AddStats(cast);
-            // AddLevel(cast);
-            // AddScore(cast);
-            // AddLives(cast);
-            // AddBall(cast);
-            // AddBricks(cast);
-            // AddRacket(cast);
-            // AddPlayer(cast);
-            // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
-
-            // AddStats(cast);
-            // AddLevel(cast);
-            // AddScore(cast);
-            // AddLives(cast);
-            // AddBall(cast);
-            // AddBricks(cast);
-            // AddRacket(cast);
-            // AddPlayer(cast);
-            // AddDialog(cast, PROGRAM_SETTINGS.ENTER_TO_START); 
+            
 
             Actor player = null;
             
@@ -264,6 +246,13 @@ namespace BashCrafter.Directing
             {
                 stage.midground.AddActor("player", player);
             }
+            Actor startGame = new Actor("startgameText");
+            startGame.AddAttribute(new AttributeText());
+            AttributeText text = (AttributeText) startGame.GetActorAttribute(AttributeKey.text);
+        text.text = "press enter to start";
+        text.TextureBounds.position = new Point(PROGRAM_SETTINGS.CENTER_X, PROGRAM_SETTINGS.CENTER_Y);
+
+        stage.forground.AddActor("text", startGame);
 
             // for (int i = 0; i < 50; i++)
             // {
@@ -271,14 +260,14 @@ namespace BashCrafter.Directing
             // // castAdder.Addrock(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_Y/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Rock " + i);
             // // castAdder.AddTree(stage.midground, new Point(random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE, random.Next((PROGRAM_SETTINGS.MAP_X/PROGRAM_SETTINGS.CELL_SIZE) ) * PROGRAM_SETTINGS.CELL_SIZE),"Tree " + i);
             // }
-            addTrees(stage.midground, 20);
-            addRocks(stage.midground, 50);
+            // addTrees(stage.midground, 20);
+            // addRocks(stage.midground, 50);
 
 
 
             
            
-            castAdder.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
+            // castAdder.AddAirship(stage.midground,new Point(PROGRAM_SETTINGS.MAP_X/2,PROGRAM_SETTINGS.MAP_Y/2),"airship");
             // forground
             // menuBuilder.AddButton(stage.forground, new Point(100,100), new Point(200,50));
 
@@ -288,25 +277,25 @@ namespace BashCrafter.Directing
 
 
             stage.ClearActions();
-            MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
+            // MouseMenuAction mouseMenu = new MouseMenuAction(MouseService, new InventoryMenu());
 
-            stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
-            stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
-            stage.addActionToScript("COLISHION", new EnemyColideAction(PhysicsService, AudioService, VideoService));
-            stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
-            stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
+            // stage.addActionToScript("control", new ControlActorAction(KeyboardService, VideoService));
+            // stage.addActionToScript("COLISHION", new CollideActorsAction(PhysicsService, AudioService, VideoService));
+            // stage.addActionToScript("COLISHION", new EnemyColideAction(PhysicsService, AudioService, VideoService));
+            // stage.addActionToScript("COLISHION", new MouseInteracAction(MouseService));
+            // stage.addActionToScript("COLISHION", new KeyboardAction(MouseService, new InventoryMenu(), KeyboardService, VideoService));
             // stage.addActionToScript("COLISHION", mouseMenu);
             // stage.addActionToScript("COLISHION",  new MouseObjectAction(MouseService));
 
             // stage.addActionToScript("menu", new TestClick(mouseMenu, new testClicker_attribute()));
-            stage.addActionToScript("move", new MoveActor(VideoService));
-            stage.addActionToScript("camera", new MoveCameraAction(VideoService));
+            // stage.addActionToScript("move", new MoveActor(VideoService));
+            // stage.addActionToScript("camera", new MoveCameraAction(VideoService));
             
             stage.addActionToScript("startDrawing", new StartDrawing(VideoService));
-            stage.addActionToScript("drawforground", new DrawActorsBackground(VideoService));
+            stage.addActionToScript("drawBackground", new DrawActorsBackground(VideoService));
             stage.addActionToScript("drawMidground", new DrawActorTexture(VideoService));
             stage.addActionToScript("end2dDraw", new End2dCamera(VideoService));
-            stage.addActionToScript("drawBackground", new DrawActorsForground(VideoService));
+            stage.addActionToScript("drawforground", new DrawActorsForground(VideoService));
             stage.addActionToScript("endDrawing", new EndDrawing(VideoService));
             stage.addActionToScript("changesen", new ChangeSceneAction(KeyboardService, PROGRAM_SETTINGS.NEW_GAME));
 //             // Actor player = stage.midground.GetFirstActor("player");

@@ -31,6 +31,8 @@ namespace BashCrafter.Actions
         public void Execute(Cast forground, Cast midground, Cast background, Script script, ActionCallback callback = null)
         {
          
+         
+                                bool tisss = true;  
         Actor player = midground.GetFirstActor("player");
         AttributeBody PlayerBody = (AttributeBody) player.GetActorAttribute(AttributeKey.body);
         Point PlayerPosition = PlayerBody.GetPosition();
@@ -41,10 +43,9 @@ namespace BashCrafter.Actions
         if (player.HasAttribute(AttributeKey.clickable))
         {
             
-        // AttributeClickable clickable = (AttributeClickable) player.GetActorAttribute(AttributeKey.clickable);
-                                    
+        // AttributeClickable clickable = (AttributeClickable) player.GetActorAttribute(AttributeKey.clickable);  
 
-            if(mouseService.IsButtonPressed("right")){
+            if(mouseService.IsButtonPressed("right") && tisss){
                 // if(clickable.getPREVEUS_State_2())
                 // {
 
@@ -65,15 +66,20 @@ namespace BashCrafter.Actions
                                 System.Console.WriteLine("spikes");
                                 // castAdder.AddSpicks(midground, mousepos, "spikes");
                                 castAdder.AddSpicks(midground, mousepos, "spike");
-                                break;
+                                inventoryPlayer.removeSeleced();
+                                
+                                
+                                return;
                             case "stone":
                                 castAdder.AddWall(midground,  mousepos, "walls");
-                                break;
+                                inventoryPlayer.removeSeleced();
+                                return;
                             default:
                                 break;
                         }
 
                         inventoryPlayer.removeSeleced();
+                        tisss = false;
                     // }
                 }
             }

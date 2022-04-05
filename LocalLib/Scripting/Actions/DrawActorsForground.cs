@@ -62,7 +62,18 @@ namespace LocalLib.Scripting.Actions
                             item.HasAttribute(AttributeKey.color) ? ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor() : new Types.Color(255,255,255));
                         videoService.DrawText(text, newPoint);
                     }
+
+      
                 }
+
+              if (item.HasAttribute(AttributeKey.text))
+                    {
+                        AttributeText textAction = (AttributeText) item.GetActorAttribute(AttributeKey.text);
+                        Text text = new Text(textAction.text, PROGRAM_SETTINGS.FONT_FILE, 48, 0,
+                            item.HasAttribute(AttributeKey.color) ? ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor() : new Types.Color(0,0,0));
+                        
+                        videoService.DrawText(text, textAction.TextureBounds.GetPosition());
+                    }
             }
         }
     }
