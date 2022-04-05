@@ -46,7 +46,7 @@ private int framesCounter = 0;
                         if (physicsService.HasCollided(itemBody, wallBody))
                         {
 
-                                Console.WriteLine($"enamy collided wall {midground.GetAllActors().IndexOf(item)}");
+                                itemBody.SetSpeed(0.0f);
                         }
 
                     }

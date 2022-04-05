@@ -77,7 +77,7 @@ namespace BashCrafter
             Actor enemy = new Actor(ActorKey);
             enemy.AddAttribute(new AttributeBody(poisition, new Point(PROGRAM_SETTINGS.ROCK_DIMENSIONS, PROGRAM_SETTINGS.ROCK_DIMENSIONS), 0));
             enemy.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            enemy.AddAttribute(new AttributeHealth(15));
+            enemy.AddAttribute(new AttributeHealth(5));
             //enemy.AddAttribute(new AttributeClickable());
             //enemy.AddAttribute(new AttributeInventory(invSize, items));
             enemy.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ENEMY, new Point(64, 64)));
@@ -119,13 +119,13 @@ namespace BashCrafter
             wall.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
             wall.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
             wall.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_WALL));
-            wall.AddAttribute(new AttributeAnimated(new Point(64, 64), 1));
+            wall.AddAttribute(new AttributeAnimated(new Point(64, 45), 1));
             wall.AddAttribute(new AttributeHealth(5));
 
             cast.AddActor("wall", wall); 
         }
         
-        public static void AddSpicks(Cast cast, Point poisition, string ActorKey)
+        public static void AddSpikes(Cast cast, Point poisition, string ActorKey)
         {
            Actor spike = new Actor(ActorKey);
             spike.AddAttribute(new AttributeBody(poisition, new Point(64, 64), 0));
@@ -136,5 +136,6 @@ namespace BashCrafter
 
             cast.AddActor("spike", spike); 
         }
+        
     }
 }

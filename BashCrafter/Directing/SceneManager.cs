@@ -153,7 +153,7 @@ namespace BashCrafter.Directing
             }
 
             
-            addTrees(stage.midground, 20);
+            addTrees(stage.midground, 100);
             addRocks(stage.midground, 50);
             
             

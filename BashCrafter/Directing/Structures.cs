@@ -84,8 +84,8 @@ namespace BashCrafter
         public static string TEXTURE_PATH_GRASS = "Data/Textures/grass.png";
         public static string TEXTURE_KEY_GRASS = "grass";
 
-        public static string TEXTURE_PATH_WALL = "Data/Textures/fence.png";
-        public static string TEXTURE_KEY_WALL = "fence";
+        public static string TEXTURE_PATH_WALL = "Data/Textures/fence2.png";
+        public static string TEXTURE_KEY_WALL = "fence2";
         
         public static string TEXTURE_PATH_SPIKES = "Data/Textures/spikes.png";
         public static string TEXTURE_KEY_SPIKES = "spikes"; 
