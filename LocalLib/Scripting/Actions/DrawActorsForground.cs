@@ -75,6 +75,22 @@ namespace LocalLib.Scripting.Actions
                         videoService.DrawText(text, textAction.TextureBounds.GetPosition());
                     }
             }
+            
+            if(midground.GetFirstActor("airship") == null)
+            {
+                
+                        Text text = new Text("GAME OVER", PROGRAM_SETTINGS.FONT_FILE, 48, 0, new Types.Color(0,0,0));
+                        
+                        videoService.DrawText(text,new Point(PROGRAM_SETTINGS.CENTER_X, PROGRAM_SETTINGS.CENTER_Y));
+            }
+            
+            if(midground.GetActors("enemyn").Count < 1 && midground.GetActors("enemye").Count < 1 && midground.GetActors("enemys").Count < 1 && midground.GetActors("enemyw").Count < 1)
+            {
+                
+                        Text text = new Text("you win", PROGRAM_SETTINGS.FONT_FILE, 48, 0, new Types.Color(0,0,0));
+                        
+                        videoService.DrawText(text,new Point(PROGRAM_SETTINGS.CENTER_X, PROGRAM_SETTINGS.CENTER_Y));
+            }
         }
     }
 }

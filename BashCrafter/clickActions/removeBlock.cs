@@ -2,6 +2,9 @@ using LocalLib.Casting;
 using LocalLib.Services;
 using LocalLib.Types;
 using System.Collections.Generic;
+using System;
+
+
 namespace LocalLib.Scripting.Actions
 {
     /// <summary>
@@ -35,6 +38,7 @@ namespace LocalLib.Scripting.Actions
                     //     // color.SetColor(new Color(200,200,0));
                     // }
                     
+                    Random random = new Random();
             foreach (Actor item in midground.GetAllActors())
             {
                 
@@ -85,20 +89,21 @@ namespace LocalLib.Scripting.Actions
                                 System.Console.WriteLine($"health {item.ActorKey} = {health.getHealth()}");
                                 int dev = health.getMaxHealth()/animated.frames;
 
+                                  
+                                    System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
+                                    AttributeInventory inventoryPlayer = (AttributeInventory) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.Inventory);
+                                    AttributeInventory inventoryItem = (AttributeInventory) item.GetActorAttribute(AttributeKey.Inventory);
+                                    foreach(Actor actor in inventoryItem.GetItems())
+                                    {
                                         if ((health.getHealth() ) % dev  == 0)
                                         {
                                             animated.currentFrame += 1;
+                                                inventoryPlayer.addItem(actor.ActorKey, random.Next(0,health.getMaxHealth() - 1));
                                         }
                                         animated.TextureBounds.position.x = (animated.TextureBounds.size.x*animated.currentFrame);
 
                                         if(health.getHealth() <= 0)
                                         {
-                                            System.Console.WriteLine($"mouse over box key = {item.ActorKey}");
-                                            AttributeInventory inventoryPlayer = (AttributeInventory) midground.GetFirstActor("player").GetActorAttribute(AttributeKey.Inventory);
-                                            AttributeInventory inventoryItem = (AttributeInventory) item.GetActorAttribute(AttributeKey.Inventory);
-                                            foreach(Actor actor in inventoryItem.GetItems())
-                                            {
-                                                inventoryPlayer.addItem(actor.ActorKey);
                                                 string aray = "";
 
                                                 foreach (char CHAR in item.ActorKey)

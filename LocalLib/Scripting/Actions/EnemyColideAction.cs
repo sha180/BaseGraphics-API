@@ -2,6 +2,7 @@ using LocalLib.Casting;
 using LocalLib.Services;
 using LocalLib.Types;
 using System;
+using System.Collections.Generic;
 
 namespace LocalLib.Scripting
 {
@@ -34,8 +35,14 @@ private int framesCounter = 0;
                 if ( framesCounter >= (PROGRAM_SETTINGS.FRAME_RATE /2))
             {
                 framesCounter = 0;
+                List<Actor> actors = new List<Actor>();
 
-                foreach (Actor item in midground.GetActors("enemy"))
+                actors.AddRange(midground.GetActors("enemyn"));
+                actors.AddRange(midground.GetActors("enemye"));
+                actors.AddRange(midground.GetActors("enemys"));
+                actors.AddRange(midground.GetActors("enemyw"));
+
+                foreach (Actor item in actors)
                 {
                     AttributeBody itemBody = (AttributeBody)item.GetActorAttribute(AttributeKey.body);
                     

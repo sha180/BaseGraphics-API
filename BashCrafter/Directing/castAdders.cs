@@ -17,11 +17,11 @@ namespace BashCrafter
             Actor tree = new Actor(ActorKey);
             tree.AddAttribute(new AttributeBody(position, new Point(PROGRAM_SETTINGS.TREE_LENGTH, PROGRAM_SETTINGS.TREE_HEIGHT), 0));
             tree.AddAttribute(new AttributeColor(PROGRAM_SETTINGS.WHITE));
-            tree.AddAttribute(new AttributeHealth(5));
+            tree.AddAttribute(new AttributeHealth(4));
             tree.AddAttribute(new AttributeClickable());
             tree.AddAttribute(new AttributeInventory(invSize, items));
             tree.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_TREE, new Point(138, 155)));
-            tree.AddAttribute(new AttributeAnimated(new Point(138, 155), 5));
+            tree.AddAttribute(new AttributeAnimated(new Point(138, 155), 4));
             
             cast.AddActor("tree", tree);
 
@@ -67,7 +67,7 @@ namespace BashCrafter
             
             cast.AddActor("player", actor);
         }
-        public static void AddEnemy(Cast cast, Point poisition, string ActorKey)
+        public static void AddEnemy(Cast cast, Point poisition, string ActorKey, char direction)
         {
         ItemAdder item = new ItemAdder();
             //  int invSize = 1;
@@ -83,7 +83,7 @@ namespace BashCrafter
             enemy.AddAttribute(new AttributeTexture(TextureRegistry.TEXTURE_KEY_ENEMY, new Point(64, 64)));
             //enemy.AddAttribute(new AttributeAnimated(new Point(128, 135), 5));
 
-            cast.AddActor("enemy", enemy);
+            cast.AddActor("enemy" + direction, enemy);
 
         }
         public static void AddAirship(Cast cast, Point poisition, string ActorKey)

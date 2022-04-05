@@ -1,5 +1,6 @@
 using LocalLib.Casting;
 using LocalLib.Services;
+using LocalLib.Types;
 
 namespace LocalLib.Scripting.Actions
 {
@@ -28,10 +29,12 @@ namespace LocalLib.Scripting.Actions
             foreach (Actor item in midground.GetAllActors())
             {
                 
+                
+                
                 if (item.HasAttribute(AttributeKey.body))
                 {
                     AttributeBody body = (AttributeBody) item.GetActorAttribute(AttributeKey.body);
-                    
+                   
                     if(item.HasAttribute(AttributeKey.texture))
                     {
                         AttributeTexture texture = (AttributeTexture) item.GetActorAttribute(AttributeKey.texture);
@@ -49,6 +52,19 @@ namespace LocalLib.Scripting.Actions
                     }else{
                         // AttributeTexture texture = (AttributeTexture)item.GetActorAttribute(AttributeKey.texture);
                         videoService.DrawRectangle(body.GetSize(), body.GetPosition(), ((AttributeColor)item.GetActorAttribute(AttributeKey.color)).GetColor(), true);
+                    }
+
+                    // if(item.HasAttribute(AttributeKey.health))
+                    if(item.ActorKey == "airship")
+                    {
+                    
+                        AttributeHealth health = 
+                            (AttributeHealth) item.GetActorAttribute(AttributeKey.health);
+
+                        Text text = new Text($"{health.getHealth()}/{health.getMaxHealth()}", PROGRAM_SETTINGS.FONT_FILE, 48, 0, new Types.Color(0,0,0));
+                        
+                        videoService.DrawText(text, body.GetPosition().Add(new Point(32,16)));
+
                     }
 
                     // if(item.HasAttribute(AttributeKey.texture)){

@@ -36,8 +36,8 @@ namespace BashCrafter.clickActions
                 
                 cast.AddActor("back", background);
 
-                Actor airship = midground.GetFirstActor("airship");
-                AttributeHealth health = (AttributeHealth)airship.GetAttribute(AttributeKey.health);
+                // Actor airship = midground.GetFirstActor("airship");
+                // AttributeHealth health = (AttributeHealth)airship.GetActorAttribute(AttributeKey.health);
                 
 
 
